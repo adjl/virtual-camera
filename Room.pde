@@ -1,6 +1,12 @@
 class Room {
 
-  float wallSize = 200;
+  Camera camera;
+  float wallSize;
+
+  Room(Camera camera) {
+    this.camera = camera;
+    wallSize = 200;
+  }
 
   void wall() {
     beginShape(QUADS);
@@ -13,9 +19,7 @@ class Room {
 
   void draw() {
     pushMatrix();
-    translate((width / 2.0) - (wallSize / 2),
-              (height / 2.0) - (wallSize / 2),
-              (height / 2.0) / tan(PI * 30 / 180) - wallSize);
+    translate(camera.getEyeX() - (wallSize / 2), camera.getEyeY() - (wallSize / 2), camera.getEyeZ() - wallSize);
     scale(wallSize);
     wall();
     popMatrix();
