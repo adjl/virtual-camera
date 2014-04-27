@@ -1,5 +1,9 @@
 class Room {
 
+  final float centreX = width / 2.0;
+  final float centreY = height / 2.0;
+  final float centreZ = (height / 2.0) / tan(PI * 30 / 180);
+
   Camera camera;
   float wallSize;
 
@@ -19,7 +23,7 @@ class Room {
 
   void draw() {
     pushMatrix();
-    translate(camera.getEyeX() - (wallSize / 2), camera.getEyeY() - (wallSize / 2), camera.getEyeZ() - wallSize);
+    translate(centreX - (wallSize / 2), centreY - (wallSize / 2), centreZ - wallSize);
     scale(wallSize);
     wall();
     popMatrix();

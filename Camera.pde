@@ -38,6 +38,26 @@ class Camera {
     return eyeZ;
   }
 
+  void moveForward() {
+    eyeZ--;
+    centreZ--;
+  }
+
+  void moveLeft() {
+    eyeX--;
+    centreX--;
+  }
+
+  void moveBackward() {
+    eyeZ++;
+    centreZ++;
+  }
+
+  void moveRight() {
+    eyeX++;
+    centreX++;
+  }
+
   void set() {
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
   }
