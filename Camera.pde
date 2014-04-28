@@ -48,8 +48,7 @@ class Camera {
   }
 
   void moveLeft() {
-    eyeX--;
-    centreX--;
+    angle -= PI / 180;
   }
 
   void moveBackward() {
@@ -58,14 +57,13 @@ class Camera {
   }
 
   void moveRight() {
-    eyeX++;
-    centreX++;
+    angle += PI / 180;
   }
 
   void set() {
     beginCamera();
-    rotateY(angle);
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
+    rotateY(angle);
     endCamera();
   }
 }
