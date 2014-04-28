@@ -12,6 +12,8 @@ class Camera {
   float upY;
   float upZ;
 
+  float angle;
+
   Camera(int width, int height) {
     eyeX = 0;
     eyeY = 0;
@@ -24,6 +26,8 @@ class Camera {
     upX = 0;
     upY = 1;
     upZ = 0;
+
+    angle = 0;
   }
 
   float getEyeX() {
@@ -59,6 +63,9 @@ class Camera {
   }
 
   void set() {
+    beginCamera();
+    rotateY(angle);
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
+    endCamera();
   }
 }
