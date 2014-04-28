@@ -1,8 +1,8 @@
 class Room {
 
-  final float centreX = width / 2.0;
-  final float centreY = height / 2.0;
-  final float centreZ = (height / 2.0) / tan(PI * 30 / 180);
+  final float centreX = 0;
+  final float centreY = 0;
+  final float centreZ = 0;
 
   Camera camera;
   float wallSize;

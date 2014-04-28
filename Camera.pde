@@ -13,13 +13,13 @@ class Camera {
   float upZ;
 
   Camera(int width, int height) {
-    eyeX = width / 2.0;
-    eyeY = height / 2.0;
-    eyeZ = (height / 2.0) / tan(PI * 30 / 180);
+    eyeX = 0;
+    eyeY = 0;
+    eyeZ = 0;
 
-    centreX = width / 2.0;
-    centreY = height / 2.0;
-    centreZ = 0;
+    centreX = 0;
+    centreY = 0;
+    centreZ = -1;
 
     upX = 0;
     upY = 1;
