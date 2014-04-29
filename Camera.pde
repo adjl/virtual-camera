@@ -65,7 +65,9 @@ class Camera {
   void set() {
     beginCamera();
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
+    translate(eyeX, eyeY, eyeZ);
     rotateY(angle);
+    translate(-centreX, -centreY, -centreZ);
     endCamera();
   }
 }
