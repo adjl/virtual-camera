@@ -28,6 +28,8 @@ class Camera {
     upZ = 0;
 
     angle = 0;
+
+    perspective(PI * 3 / 8, 4 / 3.075, 0.1, 1000);
   }
 
   float getEyeX() {
