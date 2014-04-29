@@ -1,31 +1,18 @@
 class Room {
 
-  final float centreX = 0;
-  final float centreY = 0;
-  final float centreZ = 0;
-
   Camera camera;
-  float wallSize;
+  float width, height, depth;
 
   Room(Camera camera) {
     this.camera = camera;
-    wallSize = 200;
-  }
-
-  void wall() {
-    beginShape(QUADS);
-    vertex(0, 0, 0);
-    vertex(1, 0, 0);
-    vertex(1, 1, 0);
-    vertex(0, 1, 0);
-    endShape(CLOSE);
+    width = depth = 200;
+    height = 100;
   }
 
   void draw() {
     pushMatrix();
-    translate(centreX - (wallSize / 2), centreY - (wallSize / 2), centreZ - wallSize);
-    scale(wallSize);
-    wall();
+    translate(0, 0, 0);
+    box(width, height, depth);
     popMatrix();
   }
 }
