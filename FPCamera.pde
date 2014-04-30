@@ -19,19 +19,25 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-    case 'w': // Forward
+    case 'w':
       camera.moveForward();
       break;
-    case 'a': // Left
-      camera.moveLeft();
+    case 'a':
+      camera.strafeLeft();
       break;
-    case 's': // Backward
+    case 's':
       camera.moveBackward();
       break;
-    case 'd': // Right
-      camera.moveRight();
+    case 'd':
+      camera.strafeRight();
       break;
-    case 'q': // Quit
+    case 'z':
+      camera.rotateLeft();
+      break;
+    case 'c':
+      camera.rotateRight();
+      break;
+    case 'q':
       exit();
       break;
   }
