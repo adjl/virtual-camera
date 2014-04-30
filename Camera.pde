@@ -44,15 +44,19 @@ class Camera {
     return eyeZ;
   }
 
+  void rotateLeft() {
+    angle -= PI / 180;
+  }
+
+  void rotateRight() {
+    angle += PI / 180;
+  }
+
   void moveForward() {
     eyeX += sin(angle);
     centreX += sin(angle);
     eyeZ -= cos(angle);
     centreZ -= cos(angle);
-  }
-
-  void moveLeft() {
-    angle -= PI / 180;
   }
 
   void moveBackward() {
@@ -62,8 +66,18 @@ class Camera {
     centreZ += cos(angle);
   }
 
-  void moveRight() {
-    angle += PI / 180;
+  void strafeLeft() {
+    eyeX -= sin(angle + PI / 2);
+    centreX -= sin(angle + PI / 2);
+    eyeZ += cos(angle + PI / 2);
+    centreZ += cos(angle + PI / 2);
+  }
+
+  void strafeRight() {
+    eyeX += sin(angle + PI / 2);
+    centreX += sin(angle + PI / 2);
+    eyeZ -= cos(angle + PI / 2);
+    centreZ -= cos(angle + PI / 2);
   }
 
   void set() {
