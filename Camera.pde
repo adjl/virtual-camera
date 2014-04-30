@@ -45,8 +45,10 @@ class Camera {
   }
 
   void moveForward() {
-    eyeZ--;
-    centreZ--;
+    eyeX += sin(angle);
+    centreX += sin(angle);
+    eyeZ -= cos(angle);
+    centreZ -= cos(angle);
   }
 
   void moveLeft() {
@@ -54,8 +56,10 @@ class Camera {
   }
 
   void moveBackward() {
-    eyeZ++;
-    centreZ++;
+    eyeX -= sin(angle);
+    centreX -= sin(angle);
+    eyeZ += cos(angle);
+    centreZ += cos(angle);
   }
 
   void moveRight() {
