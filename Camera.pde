@@ -53,31 +53,39 @@ class Camera {
   }
 
   void moveForward() {
-    eyeX += sin(angle);
-    centreX += sin(angle);
-    eyeZ -= cos(angle);
-    centreZ -= cos(angle);
+    float distanceX = sin(angle);
+    float distanceZ = cos(angle);
+    eyeX += distanceX;
+    centreX += distanceX;
+    eyeZ -= distanceZ;
+    centreZ -= distanceZ;
   }
 
   void moveBackward() {
-    eyeX -= sin(angle);
-    centreX -= sin(angle);
-    eyeZ += cos(angle);
-    centreZ += cos(angle);
+    float distanceX = sin(angle);
+    float distanceZ = cos(angle);
+    eyeX -= distanceX;
+    centreX -= distanceX;
+    eyeZ += distanceZ;
+    centreZ += distanceZ;
   }
 
   void strafeLeft() {
-    eyeX -= sin(angle + PI / 2);
-    centreX -= sin(angle + PI / 2);
-    eyeZ += cos(angle + PI / 2);
-    centreZ += cos(angle + PI / 2);
+    float distanceX = sin(angle + PI / 2);
+    float distanceZ = cos(angle + PI / 2);
+    eyeX -= distanceX;
+    centreX -= distanceX;
+    eyeZ += distanceZ;
+    centreZ += distanceZ;
   }
 
   void strafeRight() {
-    eyeX += sin(angle + PI / 2);
-    centreX += sin(angle + PI / 2);
-    eyeZ -= cos(angle + PI / 2);
-    centreZ -= cos(angle + PI / 2);
+    float distanceX = sin(angle + PI / 2);
+    float distanceZ = cos(angle + PI / 2);
+    eyeX += distanceX;
+    centreX += distanceX;
+    eyeZ -= distanceZ;
+    centreZ -= distanceZ;
   }
 
   void set() {
