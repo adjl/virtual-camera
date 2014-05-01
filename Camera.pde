@@ -1,47 +1,18 @@
 class Camera {
 
-  float eyeX;
-  float eyeY;
-  float eyeZ;
-
-  float centreX;
-  float centreY;
-  float centreZ;
-
-  float upX;
-  float upY;
-  float upZ;
-
+  float eyeX, eyeY, eyeZ;
+  float centreX, centreY, centreZ;
+  float upX, upY, upZ;
   float angle;
 
   Camera(int width, int height) {
-    eyeX = 0;
-    eyeY = 0;
-    eyeZ = 0;
-
-    centreX = 0;
-    centreY = 0;
+    eyeX = eyeY = eyeZ = 0;
+    centreX = centreY = 0;
     centreZ = -1;
-
-    upX = 0;
+    upX = upZ = 0;
     upY = 1;
-    upZ = 0;
-
     angle = 0;
-
     perspective(PI * 3 / 8, 4 / 3.075, 0.1, 1000);
-  }
-
-  float getEyeX() {
-    return eyeX;
-  }
-
-  float getEyeY() {
-    return eyeY;
-  }
-
-  float getEyeZ() {
-    return eyeZ;
   }
 
   void moveForward() {
