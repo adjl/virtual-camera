@@ -44,14 +44,6 @@ class Camera {
     return eyeZ;
   }
 
-  void rotateLeft() {
-    angle -= PI / 180;
-  }
-
-  void rotateRight() {
-    angle += PI / 180;
-  }
-
   void moveForward() {
     float distanceX = sin(angle);
     float distanceZ = cos(angle);
@@ -89,6 +81,7 @@ class Camera {
   }
 
   void set() {
+    angle = (mouseX - (width / 2)) * PI / 180;
     beginCamera();
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
     translate(eyeX, eyeY, eyeZ);

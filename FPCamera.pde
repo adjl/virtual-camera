@@ -31,12 +31,6 @@ void keyPressed() {
     case 'd':
       camera.strafeRight();
       break;
-    case 'z':
-      camera.rotateLeft();
-      break;
-    case 'c':
-      camera.rotateRight();
-      break;
     case 'q':
       exit();
       break;
