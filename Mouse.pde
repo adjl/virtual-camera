@@ -17,7 +17,7 @@ class Mouse {
   }
 
   int dx() {
-    return mouseX - prevX;
+    return (mouseX == 0 ? 1 : mouseX) - prevX;
   }
 
   void move(int x, int y) {
@@ -25,6 +25,6 @@ class Mouse {
   }
 
   void moved() {
-    prevX = mouseX;
+    prevX = (mouseX == 0 ? 1 : mouseX);
   }
 }
