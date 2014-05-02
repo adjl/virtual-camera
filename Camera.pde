@@ -1,11 +1,13 @@
 class Camera {
 
+  Mouse mouse;
   float eyeX, eyeY, eyeZ;
   float centreX, centreY, centreZ;
   float upX, upY, upZ;
   float angle;
 
-  Camera(int width, int height) {
+  Camera(Mouse mouse, int width, int height) {
+    this.mouse = mouse;
     eyeX = eyeY = eyeZ = 0;
     centreX = centreY = 0;
     centreZ = -1;
@@ -52,7 +54,7 @@ class Camera {
   }
 
   void set() {
-    angle = (mouseX - (width / 2)) * PI / 180;
+    angle += mouse.dx() * PI / (width - 2);
     beginCamera();
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
     translate(eyeX, eyeY, eyeZ);
