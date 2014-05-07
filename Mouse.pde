@@ -28,5 +28,13 @@ class Mouse {
   void moved() {
     if (width % 2 == 0 && mouseX == 0) prevX = 1;
     else prevX = mouseX;
+
+    if (mouseX == width - 1) {
+      robot.mouseMove(1, mouseY);
+      prevX = 1;
+    } else if ((width % 2 == 0 && mouseX == 1) || mouseX == 0) {
+      robot.mouseMove(width - 1, mouseY);
+      prevX = width - 1;
+    }
   }
 }
