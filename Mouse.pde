@@ -17,7 +17,7 @@ class Mouse {
   }
 
   int dx() {
-    if (width % 2 == 0 && mouseX == 0) return 1 - prevX;
+    if (mouseX == 0) return 1 - prevX;
     return mouseX - prevX;
   }
 
