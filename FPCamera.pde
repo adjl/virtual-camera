@@ -12,7 +12,6 @@ void setup() {
   mouse = new Mouse(width / 2);
   camera = new Camera(mouse, width, height);
   room = new Room(camera);
-  mouse.move(width / 2, height / 2);
 }
 
 void draw() {

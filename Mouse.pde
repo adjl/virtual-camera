@@ -21,10 +21,6 @@ class Mouse {
     return mouseX - prevX;
   }
 
-  void move(int x, int y) {
-    robot.mouseMove(x, y);
-  }
-
   void moved() {
     if (mouseX == width - 1) {
       robot.mouseMove(1, mouseY);
