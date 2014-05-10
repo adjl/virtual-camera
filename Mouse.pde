@@ -4,9 +4,9 @@ import java.awt.Robot;
 class Mouse {
 
   Robot robot;
-  int prevX;
+  int prevX, prevY;
 
-  Mouse(int x) {
+  Mouse(int x, int y) {
     try {
       robot = new Robot();
     } catch (AWTException e) {
@@ -14,11 +14,16 @@ class Mouse {
       exit();
     }
     prevX = x;
+    prevY = y;
   }
 
   int dx() {
     if (mouseX == 0) return 1 - prevX;
     return mouseX - prevX;
+  }
+
+  int dy() {
+    return mouseY - prevY;
   }
 
   void moved() {
@@ -31,5 +36,7 @@ class Mouse {
     } else {
       prevX = mouseX;
     }
+
+    prevY = mouseY;
   }
 }

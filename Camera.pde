@@ -4,7 +4,7 @@ class Camera {
   float eyeX, eyeY, eyeZ;
   float centreX, centreY, centreZ;
   float upX, upY, upZ;
-  float horizontalAngle;
+  float verticalAngle, horizontalAngle;
 
   Camera(Mouse mouse, int width, int height) {
     this.mouse = mouse;
@@ -13,7 +13,7 @@ class Camera {
     centreZ = -1;
     upX = upZ = 0;
     upY = 1;
-    horizontalAngle = 0;
+    verticalAngle = horizontalAngle = 0;
     perspective(PI * 3 / 8, 4 / 3.075, 0.1, 1000);
   }
 
@@ -54,10 +54,12 @@ class Camera {
   }
 
   void set() {
+    verticalAngle -= mouse.dy() * PI / (height - 2);
     horizontalAngle += mouse.dx() * PI / (width - 2);
     beginCamera();
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
     translate(eyeX, eyeY, eyeZ);
+    rotateX(verticalAngle);
     rotateY(horizontalAngle);
     translate(-centreX, -centreY, -centreZ);
     endCamera();
