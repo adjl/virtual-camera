@@ -9,7 +9,7 @@ Room room;
 void setup() {
   size(screenWidth, screenHeight, P3D);
   // noCursor();
-  mouse = new Mouse(height / 2);
+  mouse = new Mouse();
   camera = new Camera(mouse, width, height);
   room = new Room(camera);
 }

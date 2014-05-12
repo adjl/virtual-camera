@@ -4,24 +4,22 @@ import java.awt.Robot;
 class Mouse {
 
   Robot robot;
-  int prevY;
 
-  Mouse(int y) {
+  Mouse() {
     try {
       robot = new Robot();
     } catch (AWTException e) {
       println("Unable to instantiate Robot");
       exit();
     }
-    prevY = y;
   }
 
   int x() {
     return mouseX;
   }
 
-  int dy() {
-    return mouseY - prevY;
+  int y() {
+    return (height / 2) - mouseY;
   }
 
   void moved() {
@@ -30,7 +28,5 @@ class Mouse {
     } else if (mouseX == 0) {
       robot.mouseMove(width - 1, mouseY);
     }
-
-    prevY = mouseY;
   }
 }

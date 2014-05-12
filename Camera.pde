@@ -54,7 +54,7 @@ class Camera {
   }
 
   void set() {
-    verticalAngle -= mouse.dy() * PI / (height - 2);
+    verticalAngle = mouse.y() * PI * 3 / (height - 1) / 4;
     horizontalAngle = mouse.x() * PI * 2 / (width - 1);
     beginCamera();
     camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
