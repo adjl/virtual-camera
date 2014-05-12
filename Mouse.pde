@@ -4,6 +4,8 @@ import java.awt.Robot;
 class Mouse {
 
   Robot robot;
+  boolean centred;
+  int pass;
 
   Mouse() {
     try {
@@ -12,6 +14,12 @@ class Mouse {
       println("Unable to instantiate Robot");
       exit();
     }
+    centred = false;
+    pass = 3;
+  }
+
+  boolean centred() {
+    return centred;
   }
 
   int x() {
@@ -20,6 +28,11 @@ class Mouse {
 
   int y() {
     return (height / 2) - mouseY;
+  }
+
+  void centre() {
+    robot.mouseMove(width / 2, height / 2);
+    if (--pass == 0) centred = true;
   }
 
   void moved() {

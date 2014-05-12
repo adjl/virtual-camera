@@ -16,8 +16,9 @@ void setup() {
 
 void draw() {
   background(black);
+  if (mouse.centred()) mouse.moved();
+  else mouse.centre();
   camera.set();
-  mouse.moved();
   room.draw();
 }
 
