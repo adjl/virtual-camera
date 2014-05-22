@@ -14,7 +14,7 @@ class Camera {
   Camera(Mouse mouse) {
     this.mouse = mouse;
     eye = new PVector();
-    centre = new PVector(0, 0, 1);
+    centre = new PVector(0, 0, -1);
     up = new PVector(0, 1, 0);
     angle = new PVector();
     fovy = HALF_PI * 3 / 4;
@@ -85,7 +85,7 @@ class Camera {
     translate(eye.x, eye.y, eye.z);
     rotateX(angle.y);
     rotateY(angle.x);
-    translate(-centre.x, -centre.y, -centre.z);
+    translate(centre.x, centre.y, centre.z);
     endCamera();
   }
 }

@@ -27,7 +27,7 @@ class Mouse {
   }
 
   int y() {
-    return mouseY - (height / 2);
+    return (height / 2) - mouseY;
   }
 
   void centre() {
