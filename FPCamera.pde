@@ -1,6 +1,5 @@
 final int width = 1366;
 final int height = 768;
-final color black = color(0, 0, 0);
 
 Mouse mouse;
 Camera camera;
@@ -15,7 +14,7 @@ void setup() {
 }
 
 void draw() {
-  background(black);
+  background(#000000);
   if (mouse.centred()) mouse.move();
   else mouse.centre();
   camera.set();
