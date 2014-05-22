@@ -13,8 +13,8 @@ class Camera {
 
   Camera(Mouse mouse) {
     this.mouse = mouse;
-    eye = new PVector();
-    centre = new PVector(0, 0, -1);
+    eye = new PVector(0, 50, 0);
+    centre = new PVector(0, 50, -1);
     up = new PVector(0, 1, 0);
     angle = new PVector();
     fovy = HALF_PI * 3 / 4;

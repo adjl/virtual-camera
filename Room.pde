@@ -18,7 +18,7 @@ class Room {
 
   void draw() {
     pushMatrix();
-    translate(0, 0, 0);
+    translate(0, -height / 2, 0);
     box(width, height, depth);
     popMatrix();
   }
