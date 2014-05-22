@@ -53,6 +53,30 @@ class Camera {
     centreZ -= distanceZ;
   }
 
+  float[] simulateMoveForward() {
+    float distanceX = sin(horizontalAngle);
+    float distanceZ = cos(horizontalAngle);
+    return new float[] { eyeX + distanceX, eyeZ - distanceZ };
+  }
+
+  float[] simulateMoveBackward() {
+    float distanceX = sin(horizontalAngle);
+    float distanceZ = cos(horizontalAngle);
+    return new float[] { eyeX - distanceX , eyeZ + distanceZ };
+  }
+
+  float[] simulateStrafeLeft() {
+    float distanceX = sin(horizontalAngle + PI / 2);
+    float distanceZ = cos(horizontalAngle + PI / 2);
+    return new float[] { eyeX - distanceX, eyeZ + distanceZ };
+  }
+
+  float[] simulateStrafeRight() {
+    float distanceX = sin(horizontalAngle + PI / 2);
+    float distanceZ = cos(horizontalAngle + PI / 2);
+    return new float[] { eyeX + distanceX, eyeZ - distanceZ };
+  }
+
   void set() {
     verticalAngle = mouse.y() * PI * 3 / (height - 1) / 4;
     horizontalAngle = mouse.x() * PI * 2 / (width - 1);

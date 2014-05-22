@@ -20,22 +20,21 @@ void draw() {
   else mouse.centre();
   camera.set();
   room.draw();
-  println(camera.eyeX + " " + camera.eyeZ);
 }
 
 void keyPressed() {
   switch (key) {
     case 'w':
-      if (withinRoom()) camera.moveForward();
+      if (withinRoom(camera.simulateMoveForward())) camera.moveForward();
       break;
     case 'a':
-      if (withinRoom()) camera.strafeLeft();
+      if (withinRoom(camera.simulateStrafeLeft())) camera.strafeLeft();
       break;
     case 's':
-      if (withinRoom()) camera.moveBackward();
+      if (withinRoom(camera.simulateMoveBackward())) camera.moveBackward();
       break;
     case 'd':
-      if (withinRoom()) camera.strafeRight();
+      if (withinRoom(camera.simulateStrafeRight())) camera.strafeRight();
       break;
     case 'q':
       exit();
@@ -43,6 +42,8 @@ void keyPressed() {
   }
 }
 
-boolean withinRoom() {
-  return (camera.eyeX > -90) && (camera.eyeX < 90) && (camera.eyeZ > -90) && (camera.eyeZ < 90);
+boolean withinRoom(float[] cameraPosition) {
+  float x = cameraPosition[0];
+  float z = cameraPosition[1];
+  return (x > -100 && x < 100) && (z > -100 && z < 100);
 }
