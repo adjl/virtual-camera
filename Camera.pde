@@ -9,6 +9,7 @@ class Camera {
   float aspect;
   float zNear;
   float zFar;
+  float speed;
 
   Camera(Mouse mouse) {
     this.mouse = mouse;
@@ -20,57 +21,58 @@ class Camera {
     aspect = 4 / 3.075;
     zNear = 0.1;
     zFar = 1000;
+    speed = 2.0;
     perspective(fovy, aspect, zNear, zFar);
   }
 
   PVector forwardPosition() {
-    PVector distance = new PVector(-sin(angle.x), 0, cos(angle.x));
+    PVector distance = new PVector(-sin(angle.x) * speed, 0, cos(angle.x) * speed);
     PVector position = eye.get();
     position.add(distance);
     return position;
   }
 
   PVector backwardPosition() {
-    PVector distance = new PVector(sin(angle.x), 0, -cos(angle.x));
+    PVector distance = new PVector(sin(angle.x) * speed, 0, -cos(angle.x) * speed);
     PVector position = eye.get();
     position.add(distance);
     return position;
   }
 
   PVector leftPosition() {
-    PVector distance = new PVector(sin(angle.x + HALF_PI), 0, -cos(angle.x + HALF_PI));
+    PVector distance = new PVector(sin(angle.x + HALF_PI) * speed, 0, -cos(angle.x + HALF_PI) * speed);
     PVector position = eye.get();
     position.add(distance);
     return position;
   }
 
   PVector rightPosition() {
-    PVector distance = new PVector(-sin(angle.x + HALF_PI), 0, cos(angle.x + HALF_PI));
+    PVector distance = new PVector(-sin(angle.x + HALF_PI) * speed, 0, cos(angle.x + HALF_PI) * speed);
     PVector position = eye.get();
     position.add(distance);
     return position;
   }
 
   void moveForward() {
-    PVector distance = new PVector(-sin(angle.x), 0, cos(angle.x));
+    PVector distance = new PVector(-sin(angle.x) * speed, 0, cos(angle.x) * speed);
     eye.add(distance);
     centre.add(distance);
   }
 
   void moveBackward() {
-    PVector distance = new PVector(sin(angle.x), 0, -cos(angle.x));
+    PVector distance = new PVector(sin(angle.x) * speed, 0, -cos(angle.x) * speed);
     eye.add(distance);
     centre.add(distance);
   }
 
   void strafeLeft() {
-    PVector distance = new PVector(sin(angle.x + HALF_PI), 0, -cos(angle.x + HALF_PI));
+    PVector distance = new PVector(sin(angle.x + HALF_PI) * speed, 0, -cos(angle.x + HALF_PI) * speed);
     eye.add(distance);
     centre.add(distance);
   }
 
   void strafeRight() {
-    PVector distance = new PVector(-sin(angle.x + HALF_PI), 0, cos(angle.x + HALF_PI));
+    PVector distance = new PVector(-sin(angle.x + HALF_PI) * speed, 0, cos(angle.x + HALF_PI) * speed);
     eye.add(distance);
     centre.add(distance);
   }
