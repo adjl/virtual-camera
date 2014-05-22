@@ -5,7 +5,7 @@ class Mouse {
 
   Robot robot;
   boolean centred;
-  int pass;
+  int attempt;
 
   Mouse() {
     try {
@@ -15,7 +15,7 @@ class Mouse {
       exit();
     }
     centred = false;
-    pass = 3;
+    attempt = 3;
   }
 
   boolean centred() {
@@ -32,7 +32,7 @@ class Mouse {
 
   void centre() {
     robot.mouseMove(width / 2, height / 2);
-    if (--pass == 0) centred = true;
+    if (--attempt == 0) centred = true;
   }
 
   void move() {
