@@ -1,91 +1,89 @@
 class Camera {
 
   Mouse mouse;
-  float eyeX, eyeY, eyeZ;
-  float centreX, centreY, centreZ;
-  float upX, upY, upZ;
-  float verticalAngle, horizontalAngle;
+  PVector eye;
+  PVector centre;
+  PVector up;
+  PVector angle;
+  float fovy;
+  float aspect;
+  float zNear;
+  float zFar;
 
-  Camera(Mouse mouse, int width, int height) {
+  Camera(Mouse mouse) {
     this.mouse = mouse;
-    eyeX = eyeY = eyeZ = 0;
-    centreX = centreY = 0;
-    centreZ = -1;
-    upX = upZ = 0;
-    upY = 1;
-    verticalAngle = horizontalAngle = 0;
-    perspective(PI * 3 / 8, 4 / 3.075, 0.1, 1000);
+    eye = new PVector();
+    centre = new PVector(0, 0, -1);
+    up = new PVector(0, 1, 0);
+    angle = new PVector();
+    fovy = HALF_PI * 3 / 4;
+    aspect = 4 / 3.075;
+    zNear = 0.1;
+    zFar = 1000;
+    perspective(fovy, aspect, zNear, zFar);
+  }
+
+  PVector forwardPosition() {
+    PVector distance = new PVector(sin(angle.x), 0, -cos(angle.x));
+    PVector position = eye.get();
+    position.add(distance);
+    return position;
+  }
+
+  PVector backwardPosition() {
+    PVector distance = new PVector(-sin(angle.x), 0, cos(angle.x));
+    PVector position = eye.get();
+    position.add(distance);
+    return position;
+  }
+
+  PVector leftPosition() {
+    PVector distance = new PVector(-sin(angle.x + HALF_PI), 0, cos(angle.x + HALF_PI));
+    PVector position = eye.get();
+    position.add(distance);
+    return position;
+  }
+
+  PVector rightPosition() {
+    PVector distance = new PVector(sin(angle.x + HALF_PI), 0, -cos(angle.x + HALF_PI));
+    PVector position = eye.get();
+    position.add(distance);
+    return position;
   }
 
   void moveForward() {
-    float distanceX = sin(horizontalAngle);
-    float distanceZ = cos(horizontalAngle);
-    eyeX += distanceX;
-    centreX += distanceX;
-    eyeZ -= distanceZ;
-    centreZ -= distanceZ;
+    PVector distance = new PVector(sin(angle.x), 0, -cos(angle.x));
+    eye.add(distance);
+    centre.add(distance);
   }
 
   void moveBackward() {
-    float distanceX = sin(horizontalAngle);
-    float distanceZ = cos(horizontalAngle);
-    eyeX -= distanceX;
-    centreX -= distanceX;
-    eyeZ += distanceZ;
-    centreZ += distanceZ;
+    PVector distance = new PVector(-sin(angle.x), 0, cos(angle.x));
+    eye.add(distance);
+    centre.add(distance);
   }
 
   void strafeLeft() {
-    float distanceX = sin(horizontalAngle + PI / 2);
-    float distanceZ = cos(horizontalAngle + PI / 2);
-    eyeX -= distanceX;
-    centreX -= distanceX;
-    eyeZ += distanceZ;
-    centreZ += distanceZ;
+    PVector distance = new PVector(-sin(angle.x + HALF_PI), 0, cos(angle.x + HALF_PI));
+    eye.add(distance);
+    centre.add(distance);
   }
 
   void strafeRight() {
-    float distanceX = sin(horizontalAngle + PI / 2);
-    float distanceZ = cos(horizontalAngle + PI / 2);
-    eyeX += distanceX;
-    centreX += distanceX;
-    eyeZ -= distanceZ;
-    centreZ -= distanceZ;
-  }
-
-  float[] simulateMoveForward() {
-    float distanceX = sin(horizontalAngle);
-    float distanceZ = cos(horizontalAngle);
-    return new float[] { eyeX + distanceX, eyeZ - distanceZ };
-  }
-
-  float[] simulateMoveBackward() {
-    float distanceX = sin(horizontalAngle);
-    float distanceZ = cos(horizontalAngle);
-    return new float[] { eyeX - distanceX , eyeZ + distanceZ };
-  }
-
-  float[] simulateStrafeLeft() {
-    float distanceX = sin(horizontalAngle + PI / 2);
-    float distanceZ = cos(horizontalAngle + PI / 2);
-    return new float[] { eyeX - distanceX, eyeZ + distanceZ };
-  }
-
-  float[] simulateStrafeRight() {
-    float distanceX = sin(horizontalAngle + PI / 2);
-    float distanceZ = cos(horizontalAngle + PI / 2);
-    return new float[] { eyeX + distanceX, eyeZ - distanceZ };
+    PVector distance = new PVector(sin(angle.x + HALF_PI), 0, -cos(angle.x + HALF_PI));
+    eye.add(distance);
+    centre.add(distance);
   }
 
   void set() {
-    verticalAngle = mouse.y() * PI * 3 / (height - 1) / 4;
-    horizontalAngle = mouse.x() * PI * 2 / (width - 1);
+    angle.x = mouse.x() * TAU / (width - 1);
+    angle.y = mouse.y() * QUARTER_PI * 3 / (height - 1);
     beginCamera();
-    camera(eyeX, eyeY, eyeZ, centreX, centreY, centreZ, upX, upY, upZ);
-    translate(eyeX, eyeY, eyeZ);
-    rotateX(verticalAngle);
-    rotateY(horizontalAngle);
-    translate(-centreX, -centreY, -centreZ);
+    camera(eye.x, eye.y, eye.z, centre.x, centre.y, centre.z, up.x, up.y, up.z);
+    translate(eye.x, eye.y, eye.z);
+    rotateX(angle.y);
+    rotateY(angle.x);
+    translate(-centre.x, -centre.y, -centre.z);
     endCamera();
   }
 }
