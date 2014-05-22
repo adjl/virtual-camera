@@ -10,7 +10,7 @@ void setup() {
   size(width, height, P3D);
   noCursor();
   mouse = new Mouse();
-  camera = new Camera(mouse, width, height);
+  camera = new Camera(mouse);
   room = new Room();
 }
 
@@ -25,25 +25,27 @@ void draw() {
 void keyPressed() {
   switch (key) {
     case 'w':
-      if (withinRoom(camera.simulateMoveForward())) camera.moveForward();
+      if (room.within(camera.forwardPosition())) {
+        camera.moveForward();
+      }
       break;
     case 'a':
-      if (withinRoom(camera.simulateStrafeLeft())) camera.strafeLeft();
+      if (room.within(camera.leftPosition())) {
+        camera.strafeLeft();
+      }
       break;
     case 's':
-      if (withinRoom(camera.simulateMoveBackward())) camera.moveBackward();
+      if (room.within(camera.backwardPosition())) {
+        camera.moveBackward();
+      }
       break;
     case 'd':
-      if (withinRoom(camera.simulateStrafeRight())) camera.strafeRight();
+      if (room.within(camera.rightPosition())) {
+        camera.strafeRight();
+      }
       break;
     case 'q':
       exit();
       break;
   }
-}
-
-boolean withinRoom(float[] cameraPosition) {
-  float x = cameraPosition[0];
-  float z = cameraPosition[1];
-  return (x > -100 && x < 100) && (z > -100 && z < 100);
 }
