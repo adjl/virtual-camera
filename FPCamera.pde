@@ -2,8 +2,8 @@ final int width = 1366;
 final int height = 768;
 final color black = color(0, 0, 0);
 
-Camera camera;
 Mouse mouse;
+Camera camera;
 Room room;
 
 void setup() {
