@@ -11,7 +11,7 @@ class Mouse {
     try {
       robot = new Robot();
     } catch (AWTException e) {
-      println("Unable to instantiate Robot");
+      e.printStackTrace();
       exit();
     }
     centred = false;
