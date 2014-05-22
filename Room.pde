@@ -1,12 +1,13 @@
 class Room {
 
-  Camera camera;
-  float width, height, depth;
+  float width;
+  float height;
+  float depth;
 
-  Room(Camera camera) {
-    this.camera = camera;
-    width = depth = 200;
-    height = 100;
+  Room() {
+    width = 200.0f;
+    height = 100.0f;
+    depth = 200.0f;
   }
 
   void draw() {

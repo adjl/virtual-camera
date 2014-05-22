@@ -11,7 +11,7 @@ void setup() {
   noCursor();
   mouse = new Mouse();
   camera = new Camera(mouse, width, height);
-  room = new Room(camera);
+  room = new Room();
 }
 
 void draw() {
