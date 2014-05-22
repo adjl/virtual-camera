@@ -1,5 +1,5 @@
-final int screenWidth = 1366;
-final int screenHeight = 768;
+final int width = 1366;
+final int height = 768;
 final color black = color(0, 0, 0);
 
 Camera camera;
@@ -7,7 +7,7 @@ Mouse mouse;
 Room room;
 
 void setup() {
-  size(screenWidth, screenHeight, P3D);
+  size(width, height, P3D);
   noCursor();
   mouse = new Mouse();
   camera = new Camera(mouse, width, height);
