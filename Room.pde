@@ -5,9 +5,14 @@ class Room {
   float depth;
 
   Room() {
-    width = 200.0f;
-    height = 100.0f;
-    depth = 200.0f;
+    width = 200;
+    height = 100;
+    depth = 200;
+  }
+
+  boolean within(PVector position) {
+    return (position.x > -width / 2) && (position.x < width / 2) &&
+           (position.z > -depth / 2) && (position.z < depth / 2);
   }
 
   void draw() {
