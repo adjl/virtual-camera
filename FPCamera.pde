@@ -16,7 +16,7 @@ void setup() {
 
 void draw() {
   background(black);
-  if (mouse.centred()) mouse.moved();
+  if (mouse.centred()) mouse.move();
   else mouse.centre();
   camera.set();
   room.draw();
@@ -25,22 +25,22 @@ void draw() {
 void keyPressed() {
   switch (key) {
     case 'w':
-      if (room.within(camera.forwardPosition())) {
+      if (room.contains(camera.forwardPosition())) {
         camera.moveForward();
       }
       break;
     case 'a':
-      if (room.within(camera.leftPosition())) {
+      if (room.contains(camera.leftPosition())) {
         camera.strafeLeft();
       }
       break;
     case 's':
-      if (room.within(camera.backwardPosition())) {
+      if (room.contains(camera.backwardPosition())) {
         camera.moveBackward();
       }
       break;
     case 'd':
-      if (room.within(camera.rightPosition())) {
+      if (room.contains(camera.rightPosition())) {
         camera.strafeRight();
       }
       break;

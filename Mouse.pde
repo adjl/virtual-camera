@@ -35,7 +35,7 @@ class Mouse {
     if (--pass == 0) centred = true;
   }
 
-  void moved() {
+  void move() {
     if (mouseX == width - 1) {
       robot.mouseMove(0, mouseY);
     } else if (mouseX == 0) {

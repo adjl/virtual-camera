@@ -10,7 +10,7 @@ class Room {
     depth = 200;
   }
 
-  boolean within(PVector position) {
+  boolean contains(PVector position) {
     return (position.x >= -width / 2) && (position.x < width / 2) &&
            (position.y >= 0) && (position.y < height) &&
            (position.z >= -depth / 2) && (position.z < depth / 2);
