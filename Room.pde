@@ -11,8 +11,9 @@ class Room {
   }
 
   boolean within(PVector position) {
-    return (position.x > -width / 2) && (position.x < width / 2) &&
-           (position.z > -depth / 2) && (position.z < depth / 2);
+    return (position.x >= -width / 2) && (position.x < width / 2) &&
+           (position.y >= 0) && (position.y < height) &&
+           (position.z >= -depth / 2) && (position.z < depth / 2);
   }
 
   void draw() {
