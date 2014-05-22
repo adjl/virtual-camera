@@ -4,10 +4,10 @@ class Room {
   float height;
   float depth;
 
-  Room() {
-    width = 200;
-    height = 100;
-    depth = 200;
+  Room(float width, float height, float depth) {
+    this.width = width;
+    this.height = height;
+    this.depth = depth;
   }
 
   boolean contains(PVector position) {

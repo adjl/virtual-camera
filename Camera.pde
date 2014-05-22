@@ -11,10 +11,10 @@ class Camera {
   float zFar;
   float speed;
 
-  Camera(Mouse mouse) {
+  Camera(Mouse mouse, float height) {
     this.mouse = mouse;
-    eye = new PVector(0, 50, 0);
-    centre = new PVector(0, 50, -1);
+    eye = new PVector(0, height, 0);
+    centre = new PVector(0, height, -1);
     up = new PVector(0, 1, 0);
     angle = new PVector();
     fovy = HALF_PI * 3 / 4;

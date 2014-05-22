@@ -1,5 +1,9 @@
 final int width = 1366;
 final int height = 768;
+final float cameraHeight = 50;
+final float roomWidth = 200;
+final float roomHeight = 100;
+final float roomDepth = 200;
 
 Mouse mouse;
 Camera camera;
@@ -9,8 +13,8 @@ void setup() {
   size(width, height, P3D);
   noCursor();
   mouse = new Mouse();
-  camera = new Camera(mouse);
-  room = new Room();
+  camera = new Camera(mouse, cameraHeight);
+  room = new Room(roomWidth, roomHeight, roomDepth);
 }
 
 void draw() {
