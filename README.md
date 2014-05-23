@@ -6,10 +6,10 @@ A (hopefully clean) Processing implementation of a first-person camera.
 ![Third screenshot of FirstPersonCamera](https://github.com/adjl/FirstPersonCamera/raw/master/img/screenshot3.png)
 
 ## Controls
-`w` - Move forward
-`a` - Strafe left
-`s` - Move backward
-`d` - Strafe right
+`w` - Move forward  
+`a` - Strafe left  
+`s` - Move backward  
+`d` - Strafe right  
 `q` - Quit
 
 Move the cursor to look around.
