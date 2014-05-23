@@ -27,27 +27,27 @@ void draw() {
 
 void keyPressed() {
   switch (key) {
-    case 'w':
+    case 'w': // Move forward
       if (room.contains(camera.forwardPosition())) {
         camera.moveForward();
       }
       break;
-    case 'a':
+    case 'a': // Strafe left
       if (room.contains(camera.leftPosition())) {
         camera.strafeLeft();
       }
       break;
-    case 's':
+    case 's': // Move backward
       if (room.contains(camera.backwardPosition())) {
         camera.moveBackward();
       }
       break;
-    case 'd':
+    case 'd': // Strafe right
       if (room.contains(camera.rightPosition())) {
         camera.strafeRight();
       }
       break;
-    case 'q':
+    case 'q': // Quit
       exit();
       break;
   }
