@@ -43,6 +43,17 @@ void keyPressed() {
         camera.strafeRight();
       }
       break;
+    case 'r': // Fly up
+      if (room.contains(camera.upPosition())) {
+        camera.flyUp();
+      }
+      break;
+    case 'f': // Fly down
+      PVector position = camera.downPosition();
+      if (room.contains(position) && camera.aboveHeight(position)) {
+        camera.flyDown();
+      }
+      break;
     case 'q': // Quit
       exit();
       break;

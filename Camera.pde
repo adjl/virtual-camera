@@ -8,11 +8,12 @@ class Camera {
   PVector centre;
   PVector up;
   PVector angle;
+  float minY;
+  float speed;
   float fovy;
   float aspect;
   float zNear;
   float zFar;
-  float speed;
 
   Camera(float height) {
     mouse = new Mouse();
@@ -20,12 +21,17 @@ class Camera {
     centre = new PVector(0, height, -1);
     up = new PVector(0, 1, 0);
     angle = new PVector();
+    minY = height;
+    speed = 2.0;
     fovy = HALF_PI * 3 / 4;
     aspect = 4 / 3.075;
     zNear = 0.1;
     zFar = 1000;
-    speed = 2.0;
     perspective(fovy, aspect, zNear, zFar);
+  }
+
+  boolean aboveHeight(PVector position) {
+    return position.y >= minY;
   }
 
   PVector forwardPosition() {
@@ -56,6 +62,20 @@ class Camera {
     return position;
   }
 
+  PVector upPosition() {
+    PVector distance = new PVector(0, speed, 0);
+    PVector position = eye.get();
+    position.add(distance);
+    return position;
+  }
+
+  PVector downPosition() {
+    PVector distance = new PVector(0, -speed, 0);
+    PVector position = eye.get();
+    position.add(distance);
+    return position;
+  }
+
   void moveForward() {
     PVector distance = new PVector(-sin(angle.x) * speed, 0, cos(angle.x) * speed);
     eye.add(distance);
@@ -76,6 +96,18 @@ class Camera {
 
   void strafeRight() {
     PVector distance = new PVector(-sin(angle.x + HALF_PI) * speed, 0, cos(angle.x + HALF_PI) * speed);
+    eye.add(distance);
+    centre.add(distance);
+  }
+
+  void flyUp() {
+    PVector distance = new PVector(0, speed, 0);
+    eye.add(distance);
+    centre.add(distance);
+  }
+
+  void flyDown() {
+    PVector distance = new PVector(0, -speed, 0);
     eye.add(distance);
     centre.add(distance);
   }
