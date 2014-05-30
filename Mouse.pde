@@ -37,10 +37,10 @@ class Mouse {
   }
 
   void move() {
-    if (mouseX == width - 1) { // Wrap cursor horizontally
-      robot.mouseMove(0, mouseY);
-    } else if (mouseX == 0) {
+    if (mouseX == 0) { // Wrap cursor horizontally
       robot.mouseMove(width - 1, mouseY);
+    } else if (mouseX == width - 1) {
+      robot.mouseMove(0, mouseY);
     }
   }
 }
