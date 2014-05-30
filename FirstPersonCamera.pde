@@ -5,22 +5,18 @@ final float roomWidth = 200;
 final float roomHeight = 100;
 final float roomDepth = 200;
 
-Mouse mouse;
 Camera camera;
 Room room;
 
 void setup() {
   size(width, height, P3D);
   noCursor();
-  mouse = new Mouse();
-  camera = new Camera(mouse, cameraHeight);
+  camera = new Camera(cameraHeight);
   room = new Room(roomWidth, roomHeight, roomDepth);
 }
 
 void draw() {
   background(#000000);
-  if (mouse.centred()) mouse.move();
-  else mouse.centre();
   camera.set();
   room.draw();
 }
