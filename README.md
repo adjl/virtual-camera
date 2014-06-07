@@ -18,10 +18,9 @@ Move the cursor to look around.
 Modify the following in [`FirstPersonCamera.pde`](https://github.com/adjl/FirstPersonCamera/raw/master/FirstPersonCamera.pde) to your preferences:
 - `width` (default: 1366)
 - `height` (default: 768)
-- `cameraHeight` (default: 50)
-- `roomWidth` (default: 200)
-- `roomHeight` (default: 100)
-- `roomDepth` (default: 200)
+- `worldWidth` (default: 200.0f)
+- `worldHeight` (default: 100.0f)
+- `worldDepth` (default: 200.0f)
 
 ## License
 [MIT License](https://github.com/adjl/FirstPersonCamera/raw/master/LICENSE)
