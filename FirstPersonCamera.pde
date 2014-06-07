@@ -1,55 +1,55 @@
 final int width = 1366;
 final int height = 768;
-final float roomWidth = 200.0f;
-final float roomHeight = 100.0f;
-final float roomDepth = 200.0f;
+final float worldWidth = 200.0f;
+final float worldHeight = 100.0f;
+final float worldDepth = 200.0f;
 
+World world;
 Camera camera;
-Room room;
 
 void setup() {
   size(width, height, P3D);
   noCursor();
+  world = new World(worldWidth, worldHeight, worldDepth);
   camera = new Camera();
-  room = new Room(roomWidth, roomHeight, roomDepth);
 }
 
 void draw() {
   background(#000000);
+  world.draw();
   camera.set();
-  room.draw();
 }
 
 void keyPressed() {
   switch (key) {
     case 'w': // Move forward
-      if (room.contains(camera.forwardPosition())) {
+      if (world.contains(camera.forwardPosition())) {
         camera.moveForward();
       }
       break;
     case 'a': // Strafe left
-      if (room.contains(camera.leftPosition())) {
+      if (world.contains(camera.leftPosition())) {
         camera.strafeLeft();
       }
       break;
     case 's': // Move backward
-      if (room.contains(camera.backwardPosition())) {
+      if (world.contains(camera.backwardPosition())) {
         camera.moveBackward();
       }
       break;
     case 'd': // Strafe right
-      if (room.contains(camera.rightPosition())) {
+      if (world.contains(camera.rightPosition())) {
         camera.strafeRight();
       }
       break;
     case 'r': // Fly up
-      if (room.contains(camera.upPosition())) {
+      if (world.contains(camera.upPosition())) {
         camera.flyUp();
       }
       break;
     case 'f': // Fly down
       PVector position = camera.downPosition();
-      if (room.contains(position) && camera.aboveHeight(position)) {
+      if (world.contains(position) && camera.aboveHeight(position)) {
         camera.flyDown();
       }
       break;
