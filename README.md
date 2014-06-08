@@ -10,6 +10,8 @@ A (hopefully clean) Processing implementation of a first-person camera.
 `a` - Strafe left  
 `s` - Move backward  
 `d` - Strafe right  
+`r` - Fly up  
+`f` - Fly down  
 `q` - Quit
 
 Move the cursor to look around.
@@ -21,6 +23,7 @@ Modify the following in [`FirstPersonCamera.pde`](https://github.com/adjl/FirstP
 - `worldWidth` (default: 200.0f)
 - `worldHeight` (default: 100.0f)
 - `worldDepth` (default: 200.0f)
+- `cameraHeight` (default: 50.0f)
 
 ## License
 [MIT License](https://github.com/adjl/FirstPersonCamera/raw/master/LICENSE)
