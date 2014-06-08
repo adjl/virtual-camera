@@ -22,6 +22,7 @@ class World {
     stroke(#FFFFFF);
     strokeWeight(2);
     noFill();
+    translate(0, -height / 2, 0);
     box(width, height, depth);
     popMatrix();
   }

@@ -3,6 +3,7 @@ final int height = 768;
 final float worldWidth = 200.0f;
 final float worldHeight = 100.0f;
 final float worldDepth = 200.0f;
+final float cameraHeight = 50.0f;
 
 World world;
 Camera camera;
@@ -11,7 +12,7 @@ void setup() {
   size(width, height, P3D);
   noCursor();
   world = new World(worldWidth, worldHeight, worldDepth);
-  camera = new Camera();
+  camera = new Camera(cameraHeight);
 }
 
 void draw() {
