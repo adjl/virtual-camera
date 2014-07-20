@@ -1,18 +1,22 @@
-final int width = 1366;
-final int height = 768;
-final float worldWidth = 200.0f;
-final float worldHeight = 100.0f;
-final float worldDepth = 200.0f;
-final float cameraHeight = 50.0f;
+final int WIDTH = 1366;
+final int HEIGHT = 768;
+final float WORLD_WIDTH = 200.0;
+final float WORLD_HEIGHT = 100.0;
+final float WORLD_DEPTH = 200.0;
+final float CAMERA_HEIGHT = 50.0;
+final float CAMERA_SPEED = 3.0;
 
 World world;
 Camera camera;
 
 void setup() {
-  size(width, height, P3D);
+  size(WIDTH, HEIGHT, P3D);
+  stroke(#FFFFFF);
+  strokeWeight(2);
   noCursor();
-  world = new World(worldWidth, worldHeight, worldDepth);
-  camera = new Camera(cameraHeight);
+  noFill();
+  world = new World(WORLD_WIDTH, WORLD_HEIGHT, WORLD_DEPTH);
+  camera = new Camera(CAMERA_HEIGHT, CAMERA_SPEED);
 }
 
 void draw() {

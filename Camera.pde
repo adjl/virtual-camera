@@ -15,18 +15,18 @@ class Camera {
   float zNear;
   float zFar;
 
-  Camera(float height) {
+  Camera(float minY, float speed) {
     mouse = new Mouse();
-    eye = new PVector(0, height, 0);
-    centre = new PVector(0, height, -1);
+    eye = new PVector(0, minY, 0);
+    centre = new PVector(0, minY, -1);
     up = new PVector(0, 1, 0);
     angle = new PVector();
-    minY = height;
-    speed = 3.0f;
+    this.minY = minY;
+    this.speed = speed;
     fovy = HALF_PI * 3 / 4;
     aspect = 4 / 3.075;
-    zNear = 0.1f;
-    zFar = 10000f;
+    zNear = 0.1;
+    zFar = 10000;
     perspective(fovy, aspect, zNear, zFar);
   }
 
@@ -131,8 +131,11 @@ class Camera {
   }
 
   void set() {
-    if (mouse.centred()) mouse.move();
-    else mouse.centre();
+    if (mouse.centred()) {
+      mouse.move();
+    } else {
+      mouse.centre();
+    }
     angle.x = mouse.x() * TAU / (width - 1);
     angle.y = mouse.y() * QUARTER_PI * 3 / (height - 1);
     beginCamera();
@@ -175,8 +178,9 @@ class Camera {
 
     void centre() {
       robot.mouseMove(width / 2, height / 2);
-      // Cursor centering works only on the third draw() call
-      if (--attempt == 0) centred = true;
+      if (--attempt == 0) { // Cursor centering works on the third centre() call
+        centred = true;
+      }
     }
 
     void move() {
