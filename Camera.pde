@@ -34,100 +34,87 @@ class Camera {
     return position.y >= minY;
   }
 
-  PVector forwardDistance() {
+  PVector position(PVector direction) {
+    PVector position = eye.get();
+    position.add(direction);
+    return position;
+  }
+
+  void move(PVector direction) {
+    eye.add(direction);
+    centre.add(direction);
+  }
+
+  PVector forward() {
     return new PVector(-sin(angle.x) * speed, 0, cos(angle.x) * speed);
   }
 
-  PVector backwardDistance() {
+  PVector backward() {
     return new PVector(sin(angle.x) * speed, 0, -cos(angle.x) * speed);
   }
 
-  PVector leftDistance() {
+  PVector left() {
     return new PVector(sin(angle.x + HALF_PI) * speed, 0, -cos(angle.x + HALF_PI) * speed);
   }
 
-  PVector rightDistance() {
+  PVector right() {
     return new PVector(-sin(angle.x + HALF_PI) * speed, 0, cos(angle.x + HALF_PI) * speed);
   }
 
-  PVector upDistance() {
+  PVector up() {
     return new PVector(0, speed, 0);
   }
 
-  PVector downDistance() {
+  PVector down() {
     return new PVector(0, -speed, 0);
   }
 
   PVector forwardPosition() {
-    PVector position = eye.get();
-    position.add(forwardDistance());
-    return position;
+    return position(forward());
   }
 
   PVector backwardPosition() {
-    PVector position = eye.get();
-    position.add(backwardDistance());
-    return position;
+    return position(backward());
   }
 
   PVector leftPosition() {
-    PVector position = eye.get();
-    position.add(leftDistance());
-    return position;
+    return position(left());
   }
 
   PVector rightPosition() {
-    PVector position = eye.get();
-    position.add(rightDistance());
-    return position;
+    return position(right());
   }
 
   PVector upPosition() {
-    PVector position = eye.get();
-    position.add(upDistance());
-    return position;
+    return position(up());
   }
 
   PVector downPosition() {
-    PVector position = eye.get();
-    position.add(downDistance());
-    return position;
+    return position(down());
   }
 
   void moveForward() {
-    PVector distance = forwardDistance();
-    eye.add(distance);
-    centre.add(distance);
+    move(forward());
   }
 
   void moveBackward() {
-    PVector distance = backwardDistance();
-    eye.add(distance);
-    centre.add(distance);
+    move(backward());
   }
 
   void strafeLeft() {
-    PVector distance = leftDistance();
-    eye.add(distance);
-    centre.add(distance);
+    move(left());
   }
 
   void strafeRight() {
-    PVector distance = rightDistance();
-    eye.add(distance);
-    centre.add(distance);
+    move(right());
   }
 
   void flyUp() {
-    PVector distance = upDistance();
-    eye.add(distance);
-    centre.add(distance);
+    move(up());
   }
 
   void flyDown() {
-    PVector distance = downDistance();
-    eye.add(distance);
-    centre.add(distance);
+    move(down());
   }
 
   void set() {
@@ -145,6 +132,45 @@ class Camera {
     rotateY(angle.x);
     translate(centre.x, centre.y, centre.z);
     endCamera();
+  }
+
+  void moveDirection(World world, char key) {
+    switch (key) {
+      case 'w': // Move forward
+        if (world.contains(forwardPosition())) {
+          moveForward();
+        }
+        break;
+      case 'a': // Strafe left
+        if (world.contains(leftPosition())) {
+          strafeLeft();
+        }
+        break;
+      case 's': // Move backward
+        if (world.contains(backwardPosition())) {
+          moveBackward();
+        }
+        break;
+      case 'd': // Strafe right
+        if (world.contains(rightPosition())) {
+          strafeRight();
+        }
+        break;
+      case 'r': // Fly up
+        if (world.contains(upPosition())) {
+          flyUp();
+        }
+        break;
+      case 'f': // Fly down
+        PVector position = downPosition();
+        if (world.contains(position) && aboveHeight(position)) {
+          flyDown();
+        }
+        break;
+      case 'q': // Quit
+        exit();
+        break;
+    }
   }
 
   class Mouse {

@@ -26,40 +26,5 @@ void draw() {
 }
 
 void keyPressed() {
-  switch (key) {
-    case 'w': // Move forward
-      if (world.contains(camera.forwardPosition())) {
-        camera.moveForward();
-      }
-      break;
-    case 'a': // Strafe left
-      if (world.contains(camera.leftPosition())) {
-        camera.strafeLeft();
-      }
-      break;
-    case 's': // Move backward
-      if (world.contains(camera.backwardPosition())) {
-        camera.moveBackward();
-      }
-      break;
-    case 'd': // Strafe right
-      if (world.contains(camera.rightPosition())) {
-        camera.strafeRight();
-      }
-      break;
-    case 'r': // Fly up
-      if (world.contains(camera.upPosition())) {
-        camera.flyUp();
-      }
-      break;
-    case 'f': // Fly down
-      PVector position = camera.downPosition();
-      if (world.contains(position) && camera.aboveHeight(position)) {
-        camera.flyDown();
-      }
-      break;
-    case 'q': // Quit
-      exit();
-      break;
-  }
+  camera.moveDirection(world, key);
 }
