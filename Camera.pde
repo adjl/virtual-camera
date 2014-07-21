@@ -177,6 +177,7 @@ class Camera {
 
     Robot robot;
     boolean centred;
+    boolean wrapped;
     int attempt;
 
     Mouse() {
@@ -187,6 +188,7 @@ class Camera {
         exit();
       }
       centred = false;
+      wrapped = false;
       attempt = 3;
     }
 
@@ -210,9 +212,13 @@ class Camera {
     }
 
     void move() {
-      if (mouseX == 0) { // Wrap cursor horizontally
+      if (wrapped && mouseX > 0 && mouseX < width - 1) { // Wrap cursor horizontally
+        wrapped = false;
+      } else if (!wrapped && mouseX == 0) {
+        wrapped = true;
         robot.mouseMove(width - 1, mouseY);
-      } else if (mouseX == width - 1) {
+      } else if (!wrapped && mouseX == width - 1) {
+        wrapped = true;
         robot.mouseMove(0, mouseY);
       }
     }
