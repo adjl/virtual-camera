@@ -1,5 +1,3 @@
-final int WIDTH = 1366;
-final int HEIGHT = 768;
 final float WORLD_WIDTH = 200.0;
 final float WORLD_HEIGHT = 100.0;
 final float WORLD_DEPTH = 200.0;
@@ -10,7 +8,7 @@ World world;
 Camera camera;
 
 void setup() {
-  size(WIDTH, HEIGHT, P3D);
+  size(displayWidth, displayHeight, P3D);
   stroke(#FFFFFF);
   strokeWeight(2);
   noCursor();
