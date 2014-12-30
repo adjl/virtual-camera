@@ -1,5 +1,7 @@
 package com.adjl.firstpersoncamera;
 
+import com.adjl.firstpersoncamera.testing.VisibleForTesting;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 
@@ -17,6 +19,7 @@ import processing.core.PVector;
  */
 public class Camera {
 
+    private final PApplet mSketch;
     private final World mWorld;
     private final Mouse mMouse;
     private final PVector mEye;
@@ -30,8 +33,6 @@ public class Camera {
     private final float mHeight;
     private final float mSpeed;
 
-    final PApplet mSketch;
-
     /**
      * Constructs a Camera for the given sketch and world.
      *
@@ -42,7 +43,7 @@ public class Camera {
         mSketch = sketch;
         mWorld = world;
         mHeight = 50.0f;
-        mMouse = new Mouse();
+        mMouse = new Mouse(mSketch);
         mEye = new PVector(0, mHeight, 0);
         mCentre = new PVector(0, mHeight, -1);
         mUp = new PVector(0, 1, 0);
@@ -163,14 +164,22 @@ public class Camera {
         }
     }
 
-    private class Mouse {
+    @VisibleForTesting
+    static class Mouse {
+
+        private final PApplet mSketch;
 
         private Robot mRobot;
         private boolean mCentred;
         private boolean mWrapped;
-        private int mAttempt;
+        private int mAttempts;
 
-        Mouse() {
+        Mouse(PApplet sketch) {
+            this(sketch, 3);
+        }
+
+        Mouse(PApplet sketch, int attempts) {
+            mSketch = sketch;
             try {
                 mRobot = new Robot();
             } catch (AWTException e) {
@@ -179,11 +188,22 @@ public class Camera {
             }
             mCentred = false;
             mWrapped = false;
-            mAttempt = 3;
+            mAttempts = attempts;
         }
 
-        boolean isCentred() {
-            return mCentred;
+        @VisibleForTesting
+        void setWrapped(boolean wrapped) {
+            mWrapped = wrapped;
+        }
+
+        @VisibleForTesting
+        boolean isWrapped() {
+            return mWrapped;
+        }
+
+        @VisibleForTesting
+        int getAttempts() {
+            return mAttempts;
         }
 
         int getX() {
@@ -194,9 +214,13 @@ public class Camera {
             return (mSketch.height / 2) - mSketch.mouseY;
         }
 
+        boolean isCentred() {
+            return mCentred;
+        }
+
         void centre() {
             mRobot.mouseMove(mSketch.width / 2, mSketch.height / 2);
-            if (--mAttempt == 0) { // Cursor centering works on the third centre() call
+            if (--mAttempts == 0) { // Cursor centering works on the final centre() call
                 mCentred = true;
             }
         }
