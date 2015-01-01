@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="lib/base/core/jogl-all.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="FirstPersonCamera/lib/base/core"/>
