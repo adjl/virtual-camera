@@ -35,7 +35,7 @@ public class FirstPersonCamera extends PApplet {
         noFill();
         stroke(mStroke);
         strokeWeight(mStrokeWeight);
-        mWorld = new World(this);
+        mWorld = new Room(this);
         mCamera = new Camera(this, mWorld);
     }
 
