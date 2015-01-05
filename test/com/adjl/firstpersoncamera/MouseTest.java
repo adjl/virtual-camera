@@ -25,6 +25,8 @@ public class MouseTest {
     public void setUp() {
         mSketch = new PApplet();
         mMouse = new Mouse(mSketch, 2);
+        mSketch.width = 800;
+        mSketch.height = 600;
     }
 
     @Test
@@ -40,15 +42,13 @@ public class MouseTest {
 
     @Test
     public void testGetY_HalfHeighAtStart() {
-        mSketch.height = 200;
-        assertEquals(100, mMouse.getY());
+        assertEquals(300, mMouse.getY());
     }
 
     @Test
     public void testGetY_HalfHeightMinusChangeAtRun() {
-        mSketch.height = 200;
-        mSketch.mouseY = 50;
-        assertEquals(50, mMouse.getY());
+        mSketch.mouseY = 150;
+        assertEquals(150, mMouse.getY());
     }
 
     @Test
@@ -70,34 +70,30 @@ public class MouseTest {
     }
 
     @Test
-    public void testCentre() {
-        mMouse.centre();
-        assertEquals(1, mMouse.getAttempts());
-    }
-
-    @Test
-    public void testMove_NotWrappedIfNotAtEdges() {
-        mSketch.width = 200;
+    public void testMove_NotWrappedIfWrappedAndNotAtEdges() {
         mSketch.mouseX = 1;
-
         mMouse.setWrapped(true);
         mMouse.move();
         assertFalse(mMouse.isWrapped());
+    }
 
+    @Test
+    public void testMove_NotWrappedIfStillNotWrappedAndAtNotAtEdges() {
+        mSketch.mouseX = 1;
         mMouse.setWrapped(false);
         mMouse.move();
         assertFalse(mMouse.isWrapped());
     }
 
     @Test
-    public void testMove_WrappedIfAtEdges() {
-        mSketch.width = 200;
-        mSketch.mouseX = 0;
-
+    public void testMove_WrappedIfNotWrappedAndAtEdges() {
         mMouse.setWrapped(false);
         mMouse.move();
         assertTrue(mMouse.isWrapped());
+    }
 
+    @Test
+    public void testMove_WrappedIfStillWrappedAndAtEdges() {
         mMouse.setWrapped(true);
         mMouse.move();
         assertTrue(mMouse.isWrapped());
