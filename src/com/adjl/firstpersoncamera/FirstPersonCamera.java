@@ -36,7 +36,7 @@ public class FirstPersonCamera extends PApplet {
         stroke(mStroke);
         strokeWeight(mStrokeWeight);
         mWorld = new Room(this);
-        mCamera = new Camera(this, mWorld);
+        mCamera = new Camera(this, mWorld, 50.0f, 3.0f);
     }
 
     @Override
@@ -53,6 +53,6 @@ public class FirstPersonCamera extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main(new String[] { "--present",
-            com.adjl.firstpersoncamera.FirstPersonCamera.class.getName() });
+                com.adjl.firstpersoncamera.FirstPersonCamera.class.getName() });
     }
 }

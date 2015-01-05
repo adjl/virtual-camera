@@ -38,81 +38,71 @@ public class Camera {
      *
      * @param sketch {@link PApplet} (Processing sketch) the camera is used in.
      * @param world World (environment) the camera is used in.
+     * @param height Height of the camera.
+     * @param speed Speed of the camera.
      */
-    public Camera(PApplet sketch, World world) {
+    public Camera(PApplet sketch, World world, float height, float speed) {
         mSketch = sketch;
         mWorld = world;
-        mHeight = 50.0f;
-        mMouse = new Mouse(mSketch);
-        mEye = new PVector(0, mHeight, 0);
-        mCentre = new PVector(0, mHeight, -1);
-        mUp = new PVector(0, 1, 0);
+        mHeight = height;
+        mSpeed = speed;
+        mMouse = new Mouse(mSketch, 3);
+        mEye = new PVector(0.0f, mHeight, 0.0f);
+        mCentre = new PVector(0.0f, mHeight, -1.0f);
+        mUp = new PVector(0.0f, 1.0f, 0.0f);
         mAngle = new PVector();
-        mFovy = PConstants.HALF_PI * 3 / 4;
-        mAspect = 4 / 3.075f;
+        mFovy = PConstants.HALF_PI * 3.0f / 4.0f;
+        mAspect = 4.0f / 3.075f;
         mZNear = 0.1f;
         mZFar = 10000.0f;
-        mSpeed = 3.0f;
         mSketch.perspective(mFovy, mAspect, mZNear, mZFar);
     }
 
-    private PVector getForwardDirection() {
-        return new PVector(-PApplet.sin(mAngle.x) * mSpeed, 0, PApplet.cos(mAngle.x) * mSpeed);
+    @VisibleForTesting
+    PVector getEye() {
+        return mEye;
     }
 
-    private PVector getBackwardDirection() {
-        return new PVector(PApplet.sin(mAngle.x) * mSpeed, 0, -PApplet.cos(mAngle.x) * mSpeed);
+    @VisibleForTesting
+    PVector getCentre() {
+        return mCentre;
     }
 
-    private PVector getLeftDirection() {
-        return new PVector(PApplet.sin(mAngle.x + PConstants.HALF_PI) * mSpeed, 0,
+    public PVector getForwardDirection() {
+        return new PVector(-PApplet.sin(mAngle.x) * mSpeed, 0.0f, PApplet.cos(mAngle.x) * mSpeed);
+    }
+
+    public PVector getBackwardDirection() {
+        return new PVector(PApplet.sin(mAngle.x) * mSpeed, 0.0f, -PApplet.cos(mAngle.x) * mSpeed);
+    }
+
+    public PVector getLeftDirection() {
+        return new PVector(PApplet.sin(mAngle.x + PConstants.HALF_PI) * mSpeed, 0.0f,
                 -PApplet.cos(mAngle.x + PConstants.HALF_PI) * mSpeed);
     }
 
-    private PVector getRightDirection() {
-        return new PVector(-PApplet.sin(mAngle.x + PConstants.HALF_PI) * mSpeed, 0,
+    public PVector getRightDirection() {
+        return new PVector(-PApplet.sin(mAngle.x + PConstants.HALF_PI) * mSpeed, 0.0f,
                 PApplet.cos(mAngle.x + PConstants.HALF_PI) * mSpeed);
     }
 
-    private PVector getUpDirection() {
-        return new PVector(0, mSpeed, 0);
+    public PVector getUpDirection() {
+        return new PVector(0.0f, mSpeed, 0.0f);
     }
 
-    private PVector getDownDirection() {
-        return new PVector(0, mSpeed, 0);
+    public PVector getDownDirection() {
+        return new PVector(0.0f, -mSpeed, 0.0f);
     }
 
-    private PVector getPosition(PVector direction) {
+    public PVector getPosition(PVector direction) {
         PVector position = mEye.get();
         position.add(direction);
         return position;
     }
 
-    private void move(PVector direction) {
+    public void move(PVector direction) {
         mEye.add(direction);
         mCentre.add(direction);
-    }
-
-    /**
-     * Sets the camera for the current frame ({@link PApplet#draw()} call).
-     *
-     * Should only be called after the World is drawn.
-     */
-    public void set() {
-        if (mMouse.isCentred()) {
-            mMouse.move();
-        } else {
-            mMouse.centre();
-        }
-        mAngle.x = mMouse.getX() * PConstants.TAU / (mSketch.width - 1);
-        mAngle.y = mMouse.getY() * PConstants.QUARTER_PI * 3 / (mSketch.height - 1);
-        mSketch.beginCamera();
-        mSketch.camera(mEye.x, mEye.y, mEye.z, mCentre.x, mCentre.y, mCentre.z, mUp.x, mUp.y, mUp.z);
-        mSketch.translate(mEye.x, mEye.y, mEye.z);
-        mSketch.rotateX(mAngle.y);
-        mSketch.rotateY(mAngle.x);
-        mSketch.translate(mCentre.x, mCentre.y, mCentre.z);
-        mSketch.endCamera();
     }
 
     /**
@@ -164,6 +154,28 @@ public class Camera {
         }
     }
 
+    /**
+     * Sets the camera for the current frame ({@link PApplet#draw()} call).
+     *
+     * Should only be called after the World is drawn.
+     */
+    public void set() {
+        if (mMouse.isCentred()) {
+            mMouse.move();
+        } else {
+            mMouse.centre();
+        }
+        mAngle.x = mMouse.getX() * PConstants.TAU / (mSketch.width - 1);
+        mAngle.y = mMouse.getY() * PConstants.QUARTER_PI * 3.0f / (mSketch.height - 1);
+        mSketch.beginCamera();
+        mSketch.camera(mEye.x, mEye.y, mEye.z, mCentre.x, mCentre.y, mCentre.z, mUp.x, mUp.y, mUp.z);
+        mSketch.translate(mEye.x, mEye.y, mEye.z);
+        mSketch.rotateX(mAngle.y);
+        mSketch.rotateY(mAngle.x);
+        mSketch.translate(mCentre.x, mCentre.y, mCentre.z);
+        mSketch.endCamera();
+    }
+
     @VisibleForTesting
     static class Mouse {
 
@@ -173,10 +185,6 @@ public class Camera {
         private boolean mCentred;
         private boolean mWrapped;
         private int mAttempts;
-
-        Mouse(PApplet sketch) {
-            this(sketch, 3);
-        }
 
         Mouse(PApplet sketch, int attempts) {
             mSketch = sketch;
@@ -199,11 +207,6 @@ public class Camera {
         @VisibleForTesting
         boolean isWrapped() {
             return mWrapped;
-        }
-
-        @VisibleForTesting
-        int getAttempts() {
-            return mAttempts;
         }
 
         int getX() {
