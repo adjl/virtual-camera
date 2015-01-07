@@ -18,6 +18,11 @@ class Room implements World {
     }
 
     @Override
+    public float getHeight() {
+        return mHeight;
+    }
+
+    @Override
     public boolean contains(PVector position) {
         return (position.x >= -mWidth / 2.0f) && (position.x < mWidth / 2.0f)
                 && (position.y >= 0.0f) && (position.y < mHeight) && (position.z >= -mDepth / 2.0f)
@@ -26,9 +31,6 @@ class Room implements World {
 
     @Override
     public void draw() {
-        mSketch.pushMatrix();
-        mSketch.translate(0.0f, -mHeight / 2.0f, 0.0f);
         mSketch.box(mWidth, mHeight, mDepth);
-        mSketch.popMatrix();
     }
 }

@@ -7,6 +7,8 @@ import processing.core.PVector;
  */
 public interface World {
 
+    public float getHeight();
+
     public boolean contains(PVector position);
 
     public void draw();

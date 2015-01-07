@@ -333,6 +333,11 @@ public class CameraTest {
         }
 
         @Override
+        public float getHeight() {
+            return 0.0f;
+        }
+
+        @Override
         public boolean contains(PVector position) {
             return mContains;
         }

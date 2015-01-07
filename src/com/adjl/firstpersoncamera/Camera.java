@@ -169,10 +169,10 @@ public class Camera {
         mAngle.y = mMouse.getY() * PConstants.QUARTER_PI * 3.0f / (mSketch.height - 1);
         mSketch.beginCamera();
         mSketch.camera(mEye.x, mEye.y, mEye.z, mCentre.x, mCentre.y, mCentre.z, mUp.x, mUp.y, mUp.z);
-        mSketch.translate(mEye.x, mEye.y, mEye.z);
+        mSketch.translate(mCentre.x, mCentre.y + mHeight - mWorld.getHeight(), mCentre.z);
         mSketch.rotateX(mAngle.y);
         mSketch.rotateY(mAngle.x);
-        mSketch.translate(mCentre.x, mCentre.y, mCentre.z);
+        mSketch.translate(mEye.x, mEye.y, mEye.z);
         mSketch.endCamera();
     }
 
