@@ -1,7 +1,5 @@
 package com.adjl.firstpersoncamera;
 
-import com.adjl.firstpersoncamera.testing.VisibleForTesting;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 

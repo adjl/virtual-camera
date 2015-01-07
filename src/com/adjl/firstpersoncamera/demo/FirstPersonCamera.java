@@ -1,4 +1,7 @@
-package com.adjl.firstpersoncamera;
+package com.adjl.firstpersoncamera.demo;
+
+import com.adjl.firstpersoncamera.Camera;
+import com.adjl.firstpersoncamera.World;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
@@ -53,6 +56,6 @@ public class FirstPersonCamera extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main(new String[] { "--present",
-                com.adjl.firstpersoncamera.FirstPersonCamera.class.getName() });
+                com.adjl.firstpersoncamera.demo.FirstPersonCamera.class.getName() });
     }
 }

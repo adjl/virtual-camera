@@ -1,4 +1,4 @@
-package com.adjl.firstpersoncamera.testing;
+package com.adjl.firstpersoncamera;
 
 /**
  * @author adjl

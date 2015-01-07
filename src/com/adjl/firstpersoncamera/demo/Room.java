@@ -1,4 +1,6 @@
-package com.adjl.firstpersoncamera;
+package com.adjl.firstpersoncamera.demo;
+
+import com.adjl.firstpersoncamera.World;
 
 import processing.core.PApplet;
 import processing.core.PVector;
