@@ -1,7 +1,7 @@
-package com.adjl.firstpersoncamera.demo;
+package com.adjl.virtualcamera.demo;
 
-import com.adjl.firstpersoncamera.Camera;
-import com.adjl.firstpersoncamera.World;
+import com.adjl.virtualcamera.VirtualCamera;
+import com.adjl.virtualcamera.VirtualWorld;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
@@ -13,19 +13,19 @@ import processing.core.PConstants;
  *
  * @author adjl
  */
-public class FirstPersonCamera extends PApplet {
+public class Camera extends PApplet {
 
     private final int mBackground;
     private final int mStroke;
     private final int mStrokeWeight;
 
-    private World mWorld;
-    private Camera mCamera;
+    private VirtualWorld mWorld;
+    private VirtualCamera mCamera;
 
     /**
      * Constructs the FirstPersonCamera sketch.
      */
-    public FirstPersonCamera() {
+    public Camera() {
         mBackground = color(0, 0, 0);
         mStroke = color(255, 255, 255);
         mStrokeWeight = 2;
@@ -39,7 +39,7 @@ public class FirstPersonCamera extends PApplet {
         stroke(mStroke);
         strokeWeight(mStrokeWeight);
         mWorld = new Room(this);
-        mCamera = new Camera(this, mWorld, 50.0f, 3.0f);
+        mCamera = new VirtualCamera(this, mWorld, 50.0f, 3.0f);
     }
 
     @Override
@@ -56,6 +56,6 @@ public class FirstPersonCamera extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main(new String[] { "--present",
-                com.adjl.firstpersoncamera.demo.FirstPersonCamera.class.getName() });
+                com.adjl.virtualcamera.demo.Camera.class.getName() });
     }
 }

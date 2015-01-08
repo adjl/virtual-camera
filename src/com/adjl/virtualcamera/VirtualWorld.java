@@ -1,11 +1,11 @@
-package com.adjl.firstpersoncamera;
+package com.adjl.virtualcamera;
 
 import processing.core.PVector;
 
 /**
  * @author adjl
  */
-public interface World {
+public interface VirtualWorld {
 
     public float getHeight();
 

@@ -1,11 +1,11 @@
-package com.adjl.firstpersoncamera.demo;
+package com.adjl.virtualcamera.demo;
 
-import com.adjl.firstpersoncamera.World;
+import com.adjl.virtualcamera.VirtualWorld;
 
 import processing.core.PApplet;
 import processing.core.PVector;
 
-class Room implements World {
+class Room implements VirtualWorld {
 
     private final PApplet mSketch;
     private final float mWidth;

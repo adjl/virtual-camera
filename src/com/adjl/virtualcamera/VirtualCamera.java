@@ -1,4 +1,4 @@
-package com.adjl.firstpersoncamera;
+package com.adjl.virtualcamera;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -15,11 +15,11 @@ import processing.core.PVector;
  *
  * @author adjl
  */
-public class Camera {
+public class VirtualCamera {
 
     private final PApplet mSketch;
-    private final World mWorld;
-    private final Mouse mMouse;
+    private final VirtualWorld mWorld;
+    private final Pointer mMouse;
     private final PVector mEye;
     private final PVector mCentre;
     private final PVector mUp;
@@ -39,12 +39,12 @@ public class Camera {
      * @param height Height of the camera.
      * @param speed Speed of the camera.
      */
-    public Camera(PApplet sketch, World world, float height, float speed) {
+    public VirtualCamera(PApplet sketch, VirtualWorld world, float height, float speed) {
         mSketch = sketch;
         mWorld = world;
         mHeight = height;
         mSpeed = speed;
-        mMouse = new Mouse(mSketch, 3);
+        mMouse = new Pointer(mSketch, 3);
         mEye = new PVector(0.0f, mHeight, 0.0f);
         mCentre = new PVector(0.0f, mHeight, -1.0f);
         mUp = new PVector(0.0f, 1.0f, 0.0f);
@@ -175,7 +175,7 @@ public class Camera {
     }
 
     @VisibleForTesting
-    static class Mouse {
+    static class Pointer {
 
         private final PApplet mSketch;
 
@@ -184,7 +184,7 @@ public class Camera {
         private boolean mWrapped;
         private int mAttempts;
 
-        Mouse(PApplet sketch, int attempts) {
+        Pointer(PApplet sketch, int attempts) {
             mSketch = sketch;
             try {
                 mRobot = new Robot();

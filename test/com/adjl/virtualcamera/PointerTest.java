@@ -1,10 +1,10 @@
-package com.adjl.firstpersoncamera;
+package com.adjl.virtualcamera;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.adjl.firstpersoncamera.Camera.Mouse;
+import com.adjl.virtualcamera.VirtualCamera.Pointer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,19 +12,19 @@ import org.junit.Test;
 import processing.core.PApplet;
 
 /**
- * Tests {@link Mouse}.
+ * Tests {@link Pointer}.
  *
  * @author adjl
  */
-public class MouseTest {
+public class PointerTest {
 
     private PApplet mSketch;
-    private Mouse mMouse;
+    private Pointer mMouse;
 
     @Before
     public void setUp() {
         mSketch = new PApplet();
-        mMouse = new Mouse(mSketch, 2);
+        mMouse = new Pointer(mSketch, 2);
         mSketch.width = 800;
         mSketch.height = 600;
     }

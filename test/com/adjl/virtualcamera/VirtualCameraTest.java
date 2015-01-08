@@ -1,6 +1,9 @@
-package com.adjl.firstpersoncamera;
+package com.adjl.virtualcamera;
 
 import static org.junit.Assert.assertEquals;
+
+import com.adjl.virtualcamera.VirtualCamera;
+import com.adjl.virtualcamera.VirtualWorld;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,20 +14,20 @@ import processing.core.PVector;
 /**
  * @author adjl
  */
-public class CameraTest {
+public class VirtualCameraTest {
 
     private static final float DELTA = 1.0e-6f;
 
     private PApplet mSketch;
-    private TestWorld mWorld;
-    private Camera mCamera;
+    private TestVirtualWorld mWorld;
+    private VirtualCamera mCamera;
 
     @Before
     public void setUp() {
         mSketch = new PApplet();
         mSketch.init(); // Needed when PApplet is run by other code; see PApplet#sketchPath(String)
-        mWorld = new TestWorld(true);
-        mCamera = new Camera(mSketch, mWorld, 50.0f, 3.0f);
+        mWorld = new TestVirtualWorld(true);
+        mCamera = new VirtualCamera(mSketch, mWorld, 50.0f, 3.0f);
     }
 
     @Test
@@ -320,11 +323,11 @@ public class CameraTest {
         assertEquals(-1.0f, centre.z, DELTA);
     }
 
-    private class TestWorld implements World {
+    private class TestVirtualWorld implements VirtualWorld {
 
         private boolean mContains;
 
-        TestWorld(boolean contains) {
+        TestVirtualWorld(boolean contains) {
             mContains = contains;
         }
 
