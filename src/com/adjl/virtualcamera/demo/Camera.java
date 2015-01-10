@@ -5,6 +5,7 @@ import com.adjl.virtualcamera.VirtualWorld;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
+import processing.core.PVector;
 
 /**
  * {@link VirtualCamera} demo.
@@ -56,5 +57,37 @@ public class Camera extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main(new String[] { "--present", com.adjl.virtualcamera.demo.Camera.class.getName() });
+    }
+
+    private class Room implements VirtualWorld {
+
+        private final PApplet mSketch;
+        private final float mWidth;
+        private final float mHeight;
+        private final float mDepth;
+
+        Room(PApplet sketch) {
+            mSketch = sketch;
+            mWidth = 200.0f;
+            mHeight = 100.0f;
+            mDepth = 200.0f;
+        }
+
+        @Override
+        public float getHeight() {
+            return mHeight;
+        }
+
+        @Override
+        public boolean isWithin(PVector position) {
+            return (position.x >= -mWidth / 2.0f) && (position.x < mWidth / 2.0f)
+                    && (position.y >= 0.0f) && (position.y < mHeight)
+                    && (position.z >= -mDepth / 2.0f) && (position.z < mDepth / 2.0f);
+        }
+
+        @Override
+        public void draw() {
+            mSketch.box(mWidth, mHeight, mDepth);
+        }
     }
 }
