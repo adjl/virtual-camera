@@ -55,7 +55,6 @@ public class Camera extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.main(new String[] { "--present",
-                com.adjl.virtualcamera.demo.Camera.class.getName() });
+        PApplet.main(new String[] { "--present", com.adjl.virtualcamera.demo.Camera.class.getName() });
     }
 }

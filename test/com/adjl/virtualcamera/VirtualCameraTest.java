@@ -2,9 +2,6 @@ package com.adjl.virtualcamera;
 
 import static org.junit.Assert.assertEquals;
 
-import com.adjl.virtualcamera.VirtualCamera;
-import com.adjl.virtualcamera.VirtualWorld;
-
 import org.junit.Before;
 import org.junit.Test;
 
