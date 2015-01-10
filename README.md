@@ -6,6 +6,10 @@ to control the camera with the keyboard and mouse, using WASD-style movement.
 ![Second screenshot of VirtualCamera](https://github.com/adjl/VirtualCamera/raw/master/img/screenshot1.png)
 ![Third screenshot of VirtualCamera](https://github.com/adjl/VirtualCamera/raw/master/img/screenshot2.png)
 
+## Usage
+See [`com.adjl.virtualcamera.demo.Camera`](https://github.com/adjl/VirtualCamera/blob/master/src/com/adjl/virtualcamera/demo/Camera.java)
+for sample usage; run it for a demonstration.
+
 ## Controls
 `w` - Move forward  
 `a` - Strafe left  
