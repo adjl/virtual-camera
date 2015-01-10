@@ -164,7 +164,7 @@ public class VirtualCamera {
             mMouse.centre();
         }
         mAngle.x = mMouse.getX() * PConstants.TAU / (mSketch.width - 1);
-        mAngle.y = mMouse.getY() * PConstants.QUARTER_PI * 3.0f / (mSketch.height - 1);
+        mAngle.y = mMouse.getY() * PConstants.HALF_PI / (mSketch.height - 1);
         mSketch.beginCamera();
         mSketch.camera(mEye.x, mEye.y, mEye.z, mCentre.x, mCentre.y, mCentre.z, mUp.x, mUp.y, mUp.z);
         mSketch.translate(mCentre.x, mCentre.y + mHeight - mWorld.getHeight(), mCentre.z);
