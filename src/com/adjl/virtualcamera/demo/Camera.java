@@ -55,10 +55,6 @@ public class Camera extends PApplet {
         mCamera.move(key);
     }
 
-    public static void main(String[] args) {
-        PApplet.main(new String[] { "--present", com.adjl.virtualcamera.demo.Camera.class.getName() });
-    }
-
     private class Room implements VirtualWorld {
 
         private final PApplet mSketch;
@@ -89,5 +85,9 @@ public class Camera extends PApplet {
         public void draw() {
             mSketch.box(mWidth, mHeight, mDepth);
         }
+    }
+
+    public static void main(String[] args) {
+        PApplet.main(new String[] { "--present", com.adjl.virtualcamera.demo.Camera.class.getName() });
     }
 }
