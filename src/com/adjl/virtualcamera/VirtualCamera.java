@@ -8,12 +8,12 @@ import processing.core.PConstants;
 import processing.core.PVector;
 
 /**
- * First-person camera.
+ * Virtual camera.
  *
- * Java implementation of a first-person camera for use in Processing sketches. Allows you to
- * control the camera with the keyboard and mouse, using WASD(RF)-style movement.
+ * Java implementation of a virtual (3D first-person) camera for use in Processing sketches. Allows
+ * you to control the camera with the keyboard and mouse, using WASD-style movement.
  *
- * @author adjl
+ * @author Helena Josol
  */
 public class VirtualCamera {
 
@@ -32,10 +32,10 @@ public class VirtualCamera {
     private final float mSpeed;
 
     /**
-     * Constructs a Camera for the given sketch and world.
+     * Constructs a VirtualCamera for the given PApplet and {@link VirtualWorld}.
      *
-     * @param sketch {@link PApplet} (Processing sketch) the camera is used in.
-     * @param world World (environment) the camera is used in.
+     * @param sketch PApplet the camera is used in.
+     * @param world {@link VirtualWorld} the camera is used in.
      * @param height Height of the camera.
      * @param speed Speed of the camera.
      */
@@ -66,81 +66,81 @@ public class VirtualCamera {
         return mCentre;
     }
 
-    public PVector getForwardDirection() {
+    private PVector getForwardDirection() {
         return new PVector(-PApplet.sin(mAngle.x) * mSpeed, 0.0f, PApplet.cos(mAngle.x) * mSpeed);
     }
 
-    public PVector getBackwardDirection() {
+    private PVector getBackwardDirection() {
         return new PVector(PApplet.sin(mAngle.x) * mSpeed, 0.0f, -PApplet.cos(mAngle.x) * mSpeed);
     }
 
-    public PVector getLeftDirection() {
+    private PVector getLeftDirection() {
         return new PVector(PApplet.sin(mAngle.x + PConstants.HALF_PI) * mSpeed, 0.0f,
                 -PApplet.cos(mAngle.x + PConstants.HALF_PI) * mSpeed);
     }
 
-    public PVector getRightDirection() {
+    private PVector getRightDirection() {
         return new PVector(-PApplet.sin(mAngle.x + PConstants.HALF_PI) * mSpeed, 0.0f,
                 PApplet.cos(mAngle.x + PConstants.HALF_PI) * mSpeed);
     }
 
-    public PVector getUpDirection() {
+    private PVector getUpDirection() {
         return new PVector(0.0f, mSpeed, 0.0f);
     }
 
-    public PVector getDownDirection() {
+    private PVector getDownDirection() {
         return new PVector(0.0f, -mSpeed, 0.0f);
     }
 
-    public PVector getPosition(PVector direction) {
+    private PVector getPosition(PVector direction) {
         PVector position = mEye.get();
         position.add(direction);
         return position;
     }
 
-    public void move(PVector direction) {
+    private void move(PVector direction) {
         mEye.add(direction);
         mCentre.add(direction);
     }
 
     /**
-     * Moves the camera in the direction specified by the given key.
+     * Moves the VirtualCamera in the direction specified by the given key.
      *
-     * Uses WASD(RF)-movement; press R to fly up and F to fly down. Directions are relative to where
-     * the camera is facing, as controlled by the mouse.
+     * Uses WASD-style movement; press R to fly up and F to fly down. Directions are relative to
+     * where the camera is facing, as controlled by the mouse.
      *
      * @param key Key specifying the direction to move the camera.
      */
     public void move(char key) {
         switch (key) {
             case 'w': // Move forward
-                if (mWorld.contains(getPosition(getForwardDirection()))) {
+                if (mWorld.isWithin(getPosition(getForwardDirection()))) {
                     move(getForwardDirection());
                 }
                 break;
             case 'a': // Strafe left
-                if (mWorld.contains(getPosition(getLeftDirection()))) {
+                if (mWorld.isWithin(getPosition(getLeftDirection()))) {
                     move(getLeftDirection());
                 }
                 break;
             case 's': // Move backward
-                if (mWorld.contains(getPosition(getBackwardDirection()))) {
+                if (mWorld.isWithin(getPosition(getBackwardDirection()))) {
                     move(getBackwardDirection());
                 }
                 break;
             case 'd': // Strafe right
-                if (mWorld.contains(getPosition(getRightDirection()))) {
+                if (mWorld.isWithin(getPosition(getRightDirection()))) {
                     move(getRightDirection());
                 }
                 break;
             case 'r': // Fly up
-                if (mWorld.contains(getPosition(getUpDirection()))) {
+                if (mWorld.isWithin(getPosition(getUpDirection()))) {
                     move(getUpDirection());
                 }
                 break;
             case 'f': // Fly down
                 PVector position = getPosition(getDownDirection());
-                if (mWorld.contains(position) && position.y >= mHeight) {
+                if (mWorld.isWithin(position) && position.y >= mHeight) {
                     move(getDownDirection());
                 }
                 break;
@@ -153,9 +153,9 @@ public class VirtualCamera {
     }
 
     /**
-     * Sets the camera for the current frame ({@link PApplet#draw()} call).
+     * Sets the VirtualCamera for the current frame (PApplet.draw() call).
      *
-     * Should only be called after the World is drawn.
+     * Should be called after the {@link VirtualWorld} is drawn.
      */
     public void set() {
         if (mMouse.isCentred()) {
@@ -174,8 +174,7 @@ public class VirtualCamera {
         mSketch.endCamera();
     }
 
-    @VisibleForTesting
-    static class Pointer {
+    private static class Pointer {
 
         private final PApplet mSketch;
 
@@ -195,16 +194,6 @@ public class VirtualCamera {
             mCentred = false;
             mWrapped = false;
             mAttempts = attempts;
-        }
-
-        @VisibleForTesting
-        void setWrapped(boolean wrapped) {
-            mWrapped = wrapped;
-        }
-
-        @VisibleForTesting
-        boolean isWrapped() {
-            return mWrapped;
         }
 
         int getX() {

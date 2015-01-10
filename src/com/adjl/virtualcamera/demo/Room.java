@@ -25,7 +25,7 @@ class Room implements VirtualWorld {
     }
 
     @Override
-    public boolean contains(PVector position) {
+    public boolean isWithin(PVector position) {
         return (position.x >= -mWidth / 2.0f) && (position.x < mWidth / 2.0f)
                 && (position.y >= 0.0f) && (position.y < mHeight) && (position.z >= -mDepth / 2.0f)
                 && (position.z < mDepth / 2.0f);

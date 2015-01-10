@@ -7,11 +7,11 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 
 /**
- * FirstPersonCamera Processing sketch.
+ * {@link VirtualCamera} demo.
  *
- * Processing demonstration of a first-person camera.
+ * Processing sketch demonstrating a virtual camera.
  *
- * @author adjl
+ * @author Helena Josol
  */
 public class Camera extends PApplet {
 
@@ -23,7 +23,7 @@ public class Camera extends PApplet {
     private VirtualCamera mCamera;
 
     /**
-     * Constructs the FirstPersonCamera sketch.
+     * Constructs the {@link VirtualCamera} demo.
      */
     public Camera() {
         mBackground = color(0, 0, 0);
