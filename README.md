@@ -1,5 +1,5 @@
 # VirtualCamera
-Java implementation of a virtual (3D first-person) camera for use in Processing sketches. Allows you
+Java implementation of a virtual (3D first-person) camera for use in [Processing](https://processing.org) sketches. Allows you
 to control the camera with the keyboard and mouse, using WASD-style movement.
 
 ![First screenshot of VirtualCamera](https://github.com/adjl/VirtualCamera/raw/master/img/screenshot0.png)
@@ -7,7 +7,7 @@ to control the camera with the keyboard and mouse, using WASD-style movement.
 ![Third screenshot of VirtualCamera](https://github.com/adjl/VirtualCamera/raw/master/img/screenshot2.png)
 
 ## Usage
-See [`com.adjl.virtualcamera.demo.Camera`](https://github.com/adjl/VirtualCamera/blob/master/src/com/adjl/virtualcamera/demo/Camera.java)
+Please see [`com.adjl.virtualcamera.demo.Camera`](https://github.com/adjl/VirtualCamera/blob/master/src/com/adjl/virtualcamera/demo/Camera.java)
 for sample usage; run it for a demonstration.
 
 ## Controls
@@ -19,7 +19,10 @@ for sample usage; run it for a demonstration.
 `f` - Fly down  
 `q` - Quit
 
-Move the cursor to look around.
+Move the pointer to look around.
+
+## Issues
+Found a bug, have a question, or suggestion for enhancement? Please [file an issue](https://github.com/adjl/VirtualCamera/issues).
 
 ## License
 [MIT License](https://github.com/adjl/VirtualCamera/raw/master/LICENSE)
