@@ -170,7 +170,7 @@ public class VirtualCamera {
         mSketch.translate(mEye.x, mEye.y, mEye.z);
         mSketch.rotateX(mAngle.y);
         mSketch.rotateY(mAngle.x);
-        mSketch.translate(mEye.x, mEye.y + mHeight - mWorld.getHeight(), mEye.z);
+        mSketch.translate(mEye.x, mEye.y, mEye.z);
         mSketch.endCamera();
     }
 

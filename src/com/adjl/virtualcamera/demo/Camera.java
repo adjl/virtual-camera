@@ -83,7 +83,10 @@ public class Camera extends PApplet {
 
         @Override
         public void draw() {
+            mSketch.pushMatrix();
+            mSketch.translate(0.0f, -mHeight / 2.0f, 0.0f);
             mSketch.box(mWidth, mHeight, mDepth);
+            mSketch.popMatrix();
         }
     }
 
