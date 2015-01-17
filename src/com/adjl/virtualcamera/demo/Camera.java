@@ -1,11 +1,11 @@
 package com.adjl.virtualcamera.demo;
 
+import com.adjl.virtualcamera.SimpleWorld;
 import com.adjl.virtualcamera.VirtualCamera;
 import com.adjl.virtualcamera.VirtualWorld;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
-import processing.core.PVector;
 
 /**
  * {@link VirtualCamera} demo.
@@ -16,9 +16,10 @@ import processing.core.PVector;
  */
 public class Camera extends PApplet {
 
+    private final float mStrokeWeight;
     private final int mBackground;
+    private final int mFill;
     private final int mStroke;
-    private final int mStrokeWeight;
 
     private VirtualWorld mWorld;
     private VirtualCamera mCamera;
@@ -27,19 +28,21 @@ public class Camera extends PApplet {
      * Constructs the {@link VirtualCamera} demo.
      */
     public Camera() {
+        mStrokeWeight = 2.0f;
         mBackground = color(0, 0, 0);
+        mFill = color(0, 0, 0);
         mStroke = color(255, 255, 255);
-        mStrokeWeight = 2;
     }
 
     @Override
     public void setup() {
         size(displayWidth, displayHeight, PConstants.P3D);
+        rectMode(PConstants.CENTER);
         noCursor();
-        noFill();
+        fill(mFill);
         stroke(mStroke);
         strokeWeight(mStrokeWeight);
-        mWorld = new Room(this);
+        mWorld = new SimpleWorld(this);
         mCamera = new VirtualCamera(this, mWorld, 50.0f, 3.0f);
     }
 
@@ -53,41 +56,6 @@ public class Camera extends PApplet {
     @Override
     public void keyPressed() {
         mCamera.move(key);
-    }
-
-    private class Room implements VirtualWorld {
-
-        private final PApplet mSketch;
-        private final float mWidth;
-        private final float mHeight;
-        private final float mDepth;
-
-        Room(PApplet sketch) {
-            mSketch = sketch;
-            mWidth = 200.0f;
-            mHeight = 100.0f;
-            mDepth = 200.0f;
-        }
-
-        @Override
-        public float getHeight() {
-            return mHeight;
-        }
-
-        @Override
-        public boolean isWithin(PVector position) {
-            return (position.x >= -mWidth / 2.0f) && (position.x < mWidth / 2.0f)
-                    && (position.y >= 0.0f) && (position.y < mHeight)
-                    && (position.z >= -mDepth / 2.0f) && (position.z < mDepth / 2.0f);
-        }
-
-        @Override
-        public void draw() {
-            mSketch.pushMatrix();
-            mSketch.translate(0.0f, -mHeight / 2.0f, 0.0f);
-            mSketch.box(mWidth, mHeight, mDepth);
-            mSketch.popMatrix();
-        }
     }
 
     public static void main(String[] args) {

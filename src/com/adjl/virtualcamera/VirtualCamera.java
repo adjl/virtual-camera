@@ -1,11 +1,11 @@
 package com.adjl.virtualcamera;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PVector;
+
+import java.awt.AWTException;
+import java.awt.Robot;
 
 /**
  * Virtual camera.
@@ -226,5 +226,8 @@ public class VirtualCamera {
                 mRobot.mouseMove(0, mSketch.mouseY);
             }
         }
+    }
+
+    private static @interface VisibleForTesting { // Purposely empty
     }
 }
