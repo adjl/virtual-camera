@@ -21,12 +21,15 @@ public class SimpleWorld implements VirtualWorld {
      * Constructs a SimpleWorld for the given PApplet.
      *
      * @param sketch PApplet the world is used in.
+     * @param width Width of the world.
+     * @param height Height of the world.
+     * @param depth Depth of the world.
      */
-    public SimpleWorld(PApplet sketch) {
+    public SimpleWorld(PApplet sketch, float width, float height, float depth) {
         mSketch = sketch;
-        mWidth = 200.0f;
-        mHeight = 100.0f;
-        mDepth = 200.0f;
+        mWidth = width;
+        mHeight = height;
+        mDepth = depth;
     }
 
     @Override

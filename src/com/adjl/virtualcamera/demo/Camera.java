@@ -42,7 +42,7 @@ public class Camera extends PApplet {
         fill(mFill);
         stroke(mStroke);
         strokeWeight(mStrokeWeight);
-        mWorld = new SimpleWorld(this);
+        mWorld = new SimpleWorld(this, 200.0f, 100.0f, 200.0f);
         mCamera = new VirtualCamera(this, mWorld, 50.0f, 3.0f);
     }
 
