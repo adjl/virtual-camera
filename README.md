@@ -6,7 +6,9 @@ Java implementation of a virtual (3D first-person) camera for use in [Processing
 ![VirtualCamera screenshot 2](https://github.com/adjl/VirtualCamera/raw/master/img/virtualcamera2.png)
 
 ## Projects
+Projects used in:
 - [Locus](https://github.com/adjl/Locus)
+  ![Locus screenshot](https://github.com/adjl/Locus/raw/master/img/locus.png)
 
 ## Usage
 Please see [`com.adjl.virtualcamera.demo.Camera`](https://github.com/adjl/VirtualCamera/blob/master/src/com/adjl/virtualcamera/demo/Camera.java) for sample usage; run it for a demonstration.
@@ -26,4 +28,4 @@ Move the pointer to look around.
 Found a bug, have a question, or suggestion for enhancement? Please [file an issue](https://github.com/adjl/VirtualCamera/issues).
 
 ## License
-[MIT License](https://github.com/adjl/VirtualCamera/raw/master/LICENSE)
+[MIT License](https://github.com/adjl/VirtualCamera/blob/master/LICENSE)
