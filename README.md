@@ -1,17 +1,16 @@
 # VirtualCamera
-Java implementation of a virtual (3D first-person) camera for use in [Processing](https://processing.org) sketches. Allows you to control the camera with the keyboard and mouse, using WASD-style movement.
+3D first-person virtual camera [Processing](https://processing.org) library. Allows you to control the camera with the keyboard and mouse, using WASD-style movement.
 
-![VirtualCamera screenshot 0](https://github.com/adjl/VirtualCamera/raw/master/img/virtualcamera0.png)
-![VirtualCamera screenshot 1](https://github.com/adjl/VirtualCamera/raw/master/img/virtualcamera1.png)
-![VirtualCamera screenshot 2](https://github.com/adjl/VirtualCamera/raw/master/img/virtualcamera2.png)
+![VirtualCamera screenshot 0](img/virtualcamera0.png)
+![VirtualCamera screenshot 1](img/virtualcamera1.png)
+![VirtualCamera screenshot 2](img/virtualcamera2.png)
 
 ## Projects
-Projects used in:
-- [Locus](https://github.com/adjl/Locus)
-  ![Locus screenshot](https://github.com/adjl/Locus/raw/master/img/locus.png)
+### [Locus](https://github.com/adjl/Locus)
+![Locus screenshot](https://raw.githubusercontent.com/adjl/Locus/master/img/locus.png)
 
 ## Usage
-Please see [`com.adjl.virtualcamera.demo.Camera`](https://github.com/adjl/VirtualCamera/blob/master/src/com/adjl/virtualcamera/demo/Camera.java) for sample usage; run it for a demonstration.
+Please see [`com.adjl.virtualcamera.demo.Camera`](src/com/adjl/virtualcamera/demo/Camera.java) for sample usage; run it for a demonstration.
 
 ## Controls
 `w` - Move forward  
@@ -28,4 +27,4 @@ Move the pointer to look around.
 Found a bug, have a question, or suggestion for enhancement? Please [file an issue](https://github.com/adjl/VirtualCamera/issues).
 
 ## License
-[MIT License](https://github.com/adjl/VirtualCamera/blob/master/LICENSE)
+[MIT License](LICENSE)
