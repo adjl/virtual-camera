@@ -7,7 +7,7 @@
 
 ## Projects
 ### [Locus](https://github.com/adjl/Locus)
-![Locus screenshot](https://raw.githubusercontent.com/adjl/Locus/master/img/locus.png)
+![Locus screenshot](https://github.com/adjl/Locus/blob/master/img/locus.png)
 
 ## Usage
 Please see [`com.adjl.virtualcamera.demo.Camera`](src/com/adjl/virtualcamera/demo/Camera.java) for sample usage; run it for a demonstration.
