@@ -8,7 +8,7 @@ import processing.core.PVector;
  *
  * Sample implementation of a {@link VirtualWorld}.
  *
- * @author Helena Josol
+ * @author Adei Josol
  */
 public class SimpleWorld implements VirtualWorld {
 

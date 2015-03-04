@@ -11,7 +11,7 @@ import processing.core.PVector;
 /**
  * Tests {@link VirtualCamera}.
  *
- * @author Helena Josol
+ * @author Adei Josol
  */
 public class VirtualCameraTest {
 

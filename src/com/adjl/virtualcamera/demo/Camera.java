@@ -12,7 +12,7 @@ import processing.core.PConstants;
  *
  * Processing sketch demonstrating a virtual camera.
  *
- * @author Helena Josol
+ * @author Adei Josol
  */
 public class Camera extends PApplet {
 

@@ -13,7 +13,7 @@ import java.awt.Robot;
  * Java implementation of a virtual (3D first-person) camera for use in Processing sketches. Allows
  * you to control the camera with the keyboard and mouse, using WASD-style movement.
  *
- * @author Helena Josol
+ * @author Adei Josol
  */
 public class VirtualCamera {
 

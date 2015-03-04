@@ -7,7 +7,7 @@ import processing.core.PVector;
  *
  * World where the {@link VirtualCamera} moves in.
  *
- * @author Helena Josol
+ * @author Adei Josol
  */
 public interface VirtualWorld {
 
