@@ -1,4 +1,4 @@
-# VirtualCamera
+# Virtual Camera
 3D first-person virtual camera [Processing](https://processing.org) library. Allows you to control the camera with the keyboard and mouse, using WASD-style movement.
 
 ![VirtualCamera screenshot 0](img/virtualcamera0.png)
@@ -13,12 +13,12 @@
 Please see [`com.adjl.virtualcamera.demo.Camera`](src/com/adjl/virtualcamera/demo/Camera.java) for sample usage; run it for a demonstration.
 
 ## Controls
-`w` - Move forward  
-`a` - Strafe left  
-`s` - Move backward  
-`d` - Strafe right  
-`r` - Fly up  
-`f` - Fly down  
+`w` - Move forward
+`a` - Strafe left
+`s` - Move backward
+`d` - Strafe right
+`r` - Fly up
+`f` - Fly down
 `q` - Quit
 
 Move the pointer to look around.
